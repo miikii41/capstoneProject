@@ -1,40 +1,27 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
-import { useNavigation } from '@react-navigation/native'; // 네비게이션 훅 추가
-const MainPage = () => {
-  const navigation = useNavigation(); // 네비게이션 객체 사용
 
+const SetterMainPage = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Main Page</Text>
+      <Text style={styles.subHeader}>Matching</Text>
+
+      <View style={styles.chartContainer}>
+        <Text>현재 제안서의 수락 현황은.....</Text>
+      </View>
 
       {/* 버튼들 */}
       <View style={styles.buttonContainer}>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate('SeekerMainPage')}
-        >
-          <Text style={styles.buttonText}>SeekerMainPage</Text>
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.buttonText}> 요청서 수락하기</Text>
         </TouchableOpacity>
-
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate('SetterMainPage')}
-        >
-          <Text style={styles.buttonText}>SetterMainPage</Text>
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.buttonText}>제안서 작성하기</Text>
         </TouchableOpacity>
       </View>
 
-    <View style={styles.singleButtonContainer}>
-        <Text style={styles.buttonText}>임시버튼(하단바 생성후 하단 바로 옮길것)</Text>
 
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate('MyPageTabView')}
->
-          <Text style={styles.buttonText}>마이페이지</Text>
-        </TouchableOpacity>
-      </View>
     </View>
   );
 };
@@ -74,7 +61,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     alignItems: 'center',
     justifyContent: 'center',
-    width: 160,
+    width: 140,
     height: 60,
   },
   buttonText: {
@@ -83,4 +70,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MainPage;
+export default SetterMainPage;
