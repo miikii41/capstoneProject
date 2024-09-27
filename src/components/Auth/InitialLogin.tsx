@@ -24,10 +24,19 @@ const InitialLogin = () => {
         >
           <Text style={styles.buttonText}>SetterLogin</Text>
         </TouchableOpacity>
+
       </View>
 
+    <View style={styles.textButtonContainer}>
+        <TouchableOpacity onPress={() => { /* 비밀번호찾기 기능 */ }}>
+          <Text style={styles.textButton}>비밀번호 찾기     </Text>
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => { /* 회원가입 기능 */ }}>
+          <Text style={styles.textButton}>  회원가입</Text>
+        </TouchableOpacity>
+      </View>
+      </View>
 
-    </View>
   );
 };
 
@@ -72,6 +81,16 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 16,
     fontWeight: 'bold',
+  },
+ textButtonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    width: '50%',
+    marginTop: 10,  // 위와의 간격을 위한 여백
+  },
+  textButton: {
+    fontSize: 14,  // 글씨 크기
+    color: 'black', // 버튼 글씨 색상
   },
 });
 
