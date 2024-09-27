@@ -1,48 +1,30 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
 import { useNavigation } from '@react-navigation/native'; // 네비게이션 훅 추가
-const MainPage = () => {
+
+const InitialLogin = () => {
   const navigation = useNavigation(); // 네비게이션 객체 사용
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>Main Page</Text>
+      <Text style={styles.header}>Login</Text>
 
       {/* 버튼들 */}
       <View style={styles.buttonContainer}>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.navigate('SeekerMainPage')}
+          onPress={() => navigation.navigate('SeekerLogin')}
         >
-          <Text style={styles.buttonText}>SeekerMainPage</Text>
+          <Text style={styles.buttonText}>SeekerLogin</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.navigate('SetterMainPage')}
+          onPress={() => navigation.navigate('SetterLogin')}
         >
-          <Text style={styles.buttonText}>SetterMainPage</Text>
+          <Text style={styles.buttonText}>SetterLogin</Text>
         </TouchableOpacity>
       </View>
-
-    <View style={styles.singleButtonContainer}>
-        <Text style={styles.buttonText}>임시버튼(하단바 생성후 하단 바로 옮길것)</Text>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate('MyPageTabView')} >
-          <Text style={styles.buttonText}>마이페이지</Text>
-        </TouchableOpacity>
-      </View>
-
-      <View style={styles.singleButtonContainer}>
-          <Text style={styles.buttonText}>임시버튼</Text>
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => navigation.navigate('InitialLogin')} >
-            <Text style={styles.buttonText}>로그인</Text>
-          </TouchableOpacity>
-        </View>
-
 
 
     </View>
@@ -93,4 +75,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MainPage;
+export default InitialLogin;

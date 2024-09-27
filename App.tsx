@@ -9,6 +9,10 @@ import MyPageHome from './src/components/Home/MyPage/MyPageHome'; // MyPageHomee
 import MyPageTabView from './src/components/Home/MyPage/MyPageTabView';
 import PortfolioPage from './src/components/Home/MyPage/PortfolioPage';
 import Review from './src/components/Home/MyPage/Review';
+import InitialLogin from './src/components/Auth/InitialLogin';
+import SeekerLogin from './src/components/Auth/Seeker/SeekerLogin';
+import SetterLogin from './src/components/Auth/Setter/SetterLogin';
+
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 const Stack = createNativeStackNavigator();
@@ -32,6 +36,9 @@ function App(): React.JSX.Element {
           <Stack.Screen name="MyPageTabView" component={MyPageTabView} />
           <Stack.Screen name="PortfolioPage" component={PortfolioPage} />
           <Stack.Screen name="Review" component={Review} />
+          <Stack.Screen name="InitialLogin" component={InitialLogin} />
+          <Stack.Screen name="SetterLogin" component={SetterLogin} />
+          <Stack.Screen name="SeekerLogin" component={SeekerLogin} />
           {/* 추가적인 스크린 설정 가능 */}
         </Stack.Navigator>
       </SafeAreaView>
