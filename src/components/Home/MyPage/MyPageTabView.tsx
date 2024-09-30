@@ -1,15 +1,24 @@
 import React, { useState } from 'react';
-import { SafeAreaView, View, Text, Image, ImageBackground } from 'react-native';
+import { SafeAreaView, View, Text, Image, ImageBackground, TouchableOpacity, Linking } from 'react-native';
 import { Tabs, MaterialTabBar } from 'react-native-collapsible-tab-view';
 import { StackScreenProps } from '@react-navigation/stack';
 import { HomeStackParams } from '../../../pages/Home';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+
+
+
 
 import PortfolioPage from './PortfolioPage';
 import Review from './Review';
 
 export const ProfileSection = ({ navigation }: { navigation: any }) => {
   const UserName = '닉네임';
-  const selfIntroduce = '인스타 link /n 블로그 link 링크드인 예정';
+  const instagramURL = 'https://www.instagram.com/fashion_seek_/?utm_source=ig_web_button_share_sheet';
+  const blogURL = 'https://section.blog.naver.com/BlogHome.naver?directoryNo=0&currentPage=1&groupId=0';
+
+  const handlePressLink = (url: string) => {
+    Linking.openURL(url).catch((err) => console.error("Couldn't load page", err));
+  };
 
 
   return (
@@ -24,9 +33,20 @@ export const ProfileSection = ({ navigation }: { navigation: any }) => {
           source={{ uri: 'https://image.made-in-china.com/2f0j00efRbSJMtHgqG/Denim-Bag-Youth-Fashion-Casual-Small-Mini-Square-Ladies-Shoulder-Bag-Women-Wash-Bags.webp' }}
         />
       </ImageBackground>
+
       <Text style={{ marginTop: 8, fontWeight: 'bold', fontSize: 20 }}>{UserName}</Text>
-      <View style={{ padding: 20, paddingTop: 0, paddingBottom: 0 }}>
-        <Text>{selfIntroduce}</Text>
+      <View style={{ flexDirection: 'row', padding: 20, paddingTop: 10, paddingBottom: 0 }}>
+
+        {/* 인스타그램 아이콘 */}
+        <TouchableOpacity onPress={() => handlePressLink(instagramURL)} style={{ marginHorizontal: 10 }}>
+          <Icon name="instagram" size={30} color="#E4405F" />
+        </TouchableOpacity>
+
+        {/* 블로그 아이콘 */}
+        <TouchableOpacity onPress={() => handlePressLink(blogURL)} style={{ marginHorizontal: 10 }}>
+          <Icon name="web" size={30} color="#00BFFF" />
+        </TouchableOpacity>
+
       </View>
     </View>
   );

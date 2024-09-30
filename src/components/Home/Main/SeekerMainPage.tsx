@@ -1,9 +1,12 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native'; // 네비게이션 훅 추가
 
 const SeekerMainPage = () => {
+  const navigation = useNavigation(); // 네비게이션 객체 사용
   return (
     <View style={styles.container}>
+
       <Text style={styles.header}>Main Page</Text>
       <Text style={styles.subHeader}>Matching</Text>
 
@@ -13,17 +16,24 @@ const SeekerMainPage = () => {
 
       {/* 버튼들 */}
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate('WeatherPage')}
+        >
           <Text style={styles.buttonText}>날씨 확인하기</Text>
         </TouchableOpacity>
+
         <TouchableOpacity style={styles.button}>
           <Text style={styles.buttonText}>요청서 작성하기</Text>
         </TouchableOpacity>
       </View>
 
-      <View style={styles.singleButtonContainer}>
+      <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.button}>
-          <Text style={styles.buttonText}>캘린더</Text>
+          <Text style={styles.buttonText}>Closet</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.button}>
+           <Text style={styles.buttonText}>캘린더</Text>
         </TouchableOpacity>
       </View>
     </View>
