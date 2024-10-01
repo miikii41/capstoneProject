@@ -14,6 +14,7 @@ import SeekerLogin from './src/components/Auth/Seeker/SeekerLogin';
 import SetterLogin from './src/components/Auth/Setter/SetterLogin';
 import WeatherProvider from './src/contexts/WeatherProvider'; // 새로 추가한 WeatherProvider
 import WeatherPage from "./src/components/Weather/WeatherPage"; // WeatherPage를 추가
+import RequestPage from './src/components/Home/Request/RequestPage';
 
 
 import { Colors } from 'react-native/Libraries/NewAppScreen';
@@ -44,6 +45,7 @@ function App(): React.JSX.Element {
           <Stack.Screen name="SetterLogin" component={SetterLogin} />
           <Stack.Screen name="SeekerLogin" component={SeekerLogin} />
           <Stack.Screen name="WeatherPage" component={WeatherPage} />
+          <Stack.Screen name="RequestPage" component={RequestPage} />
 
           {/* 추가적인 스크린 설정 가능 */}
         </Stack.Navigator>

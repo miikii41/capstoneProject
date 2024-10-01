@@ -42,6 +42,13 @@ const MainPage = () => {
             <Text style={styles.buttonText}>로그인</Text>
           </TouchableOpacity>
         </View>
+        <View style={styles.singleButtonContainer}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => navigation.navigate('RequestPage')} >
+            <Text style={styles.buttonText}>Request 작성</Text>
+          </TouchableOpacity>
+        </View>
 
 
 
