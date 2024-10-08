@@ -134,7 +134,7 @@ const RequestPage = () => {
       {/* With Section */}
       <Text style={styles.sectionTitle}>With</Text>
       <View style={styles.buttonGroup}>
-        {["친구", "연인", "가족", "비즈니스"].map((withWho) => (
+        {["친구", "연인", "가족", "비즈니스", "기타"].map((withWho) => (
           <TouchableOpacity
             key={withWho}
             style={[

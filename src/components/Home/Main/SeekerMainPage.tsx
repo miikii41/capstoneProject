@@ -23,10 +23,16 @@ const SeekerMainPage = () => {
           <Text style={styles.buttonText}>날씨 확인하기</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button}
+           onPress={() => navigation.navigate('RequestPage')} >
           <Text style={styles.buttonText}>요청서 작성하기</Text>
         </TouchableOpacity>
       </View>
+
+
+
+
+
 
       <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.button}>
