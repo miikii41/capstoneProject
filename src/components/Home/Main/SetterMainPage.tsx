@@ -1,7 +1,13 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
+import { useNavigation } from '@react-navigation/native'; // 네비게이션 훅 추가
+
+
 
 const SetterMainPage = () => {
+
+  const navigation = useNavigation(); // 네비게이션 객체 사용
+
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Main Page</Text>
@@ -19,6 +25,18 @@ const SetterMainPage = () => {
         <TouchableOpacity style={styles.button}>
           <Text style={styles.buttonText}>제안서 작성하기</Text>
         </TouchableOpacity>
+      </View>
+
+
+
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity
+         style={styles.button}
+         onPress={() => navigation.navigate('MyPageTabView')}
+          >
+           <Text style={styles.buttonText}>마이페이지</Text>
+        </TouchableOpacity>
+
       </View>
 
 

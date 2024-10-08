@@ -1,8 +1,8 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native'; // 네비게이션 훅 추가
 
-const InitialLogin = () => {
+const InitialLogin = ({ setUserType = () => {} }) => {
   const navigation = useNavigation(); // 네비게이션 객체 사용
 
   return (
@@ -24,10 +24,9 @@ const InitialLogin = () => {
         >
           <Text style={styles.buttonText}>SetterLogin</Text>
         </TouchableOpacity>
-
       </View>
 
-    <View style={styles.textButtonContainer}>
+      <View style={styles.textButtonContainer}>
         <TouchableOpacity onPress={() => { /* 비밀번호찾기 기능 */ }}>
           <Text style={styles.textButton}>비밀번호 찾기     </Text>
         </TouchableOpacity>
@@ -35,8 +34,20 @@ const InitialLogin = () => {
           <Text style={styles.textButton}>  회원가입</Text>
         </TouchableOpacity>
       </View>
-      </View>
 
+      {/* 사용자 타입 설정 버튼들 */}
+      <TouchableOpacity style={styles.button} onPress={() => { setUserType('seeker'); }}>
+        <Text style={styles.buttonText}>Seeker</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.button} onPress={() => { setUserType('setter'); }}>
+        <Text style={styles.buttonText}>Setter</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity style={styles.button} onPress={() => { setUserType('guest'); navigation.navigate('MainPage'); }}>
+        <Text style={styles.buttonText}>Guest</Text>
+      </TouchableOpacity>
+
+    </View>
   );
 };
 
@@ -73,6 +84,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#e0e0e0',
     padding: 10,
     borderRadius: 10,
+    margin:10,
     alignItems: 'center',
     justifyContent: 'center',
     width: 160,
@@ -82,7 +94,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
   },
- textButtonContainer: {
+  textButtonContainer: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     width: '50%',
