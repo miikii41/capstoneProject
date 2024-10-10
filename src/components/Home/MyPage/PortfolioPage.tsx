@@ -27,7 +27,7 @@ const PortfolioPage = () => {
               <Text>{item.label}</Text>
               <FlatList
                 data={portfolioImages}
-                numColumns={2}
+                numColumns={3} // 한 줄에 세 개씩 배치
                 keyExtractor={(image) => image.id.toString()}
                 renderItem={({ item: image }) => (
                   <TouchableOpacity>
@@ -71,12 +71,15 @@ const PortfolioSection = styled.View`
 const ImageContainer = styled.View`
   flex: 1;
   margin: 5px;
+  align-items: center;
 `;
 
 const PortfolioImage = styled.Image`
-  width: 100px;
-  height: 100px;
-  border-radius: 8px;
+  width: 115;
+  height: 115px;
+  border-radius: 5px;
+
 `;
+
 
 export default PortfolioPage;
