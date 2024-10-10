@@ -7,7 +7,7 @@ const SeekerMainPage = () => {
   return (
     <View style={styles.container}>
 
-      <Text style={styles.header}>Main Page</Text>
+      <Text style={{...styles.header, marginBottom:40, color: 'black' }}>Main Page</Text>
       <Text style={styles.subHeader}>Matching</Text>
 
       <View style={styles.chartContainer}>
@@ -24,7 +24,7 @@ const SeekerMainPage = () => {
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.button}
-           onPress={() => navigation.navigate('RequestPage')} >
+           onPress={() => navigation.navigate('RequestForm')} >
           <Text style={styles.buttonText}>요청서 작성하기</Text>
         </TouchableOpacity>
       </View>
@@ -49,13 +49,13 @@ const SeekerMainPage = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
   },
   header: {
-    fontSize: 30,
-    fontWeight: 'bold',
+    fontSize: 50,
+    fontWeight: '900',
     marginBottom: 10,
+
   },
   subHeader: {
     fontSize: 20,

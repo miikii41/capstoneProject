@@ -16,6 +16,9 @@ import SetterLogin from './src/components/Auth/Setter/SetterLogin';
 import WeatherProvider from './src/contexts/WeatherProvider'; // 새로 추가한 WeatherProvider
 import WeatherPage from "./src/components/Weather/WeatherPage"; // WeatherPage를 추가
 import RequestPage from './src/components/Home/Request/RequestPage';
+import RequestApproval from './src/components/Home/Request/RequestApproval';
+import RequestForm from './src/components/Home/Request/RequestForm';
+
 
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 
@@ -28,8 +31,12 @@ function SeekerNavigator() {
   return (
     <Tab.Navigator>
       <Tab.Screen name="SeekerMainPage" component={SeekerMainPage} />
-      <Tab.Screen name="RequestPage" component={RequestPage} />
+      <Tab.Screen name="RequestForm" component={RequestForm} />
       <Tab.Screen name="WeatherPage" component={WeatherPage} />
+      <Stack.Screen name="RequestApproval" component={RequestApproval} />
+      <Stack.Screen name="RequestPage" component={RequestPage} />
+
+
     </Tab.Navigator>
   );
 }
@@ -42,6 +49,10 @@ function SetterNavigator() {
       <Tab.Screen name="PortfolioPage" component={PortfolioPage} />
       <Tab.Screen name="Review" component={Review} />
        <Stack.Screen name="MyPageTabView" component={MyPageTabView} />
+       <Stack.Screen name="RequestApproval" component={RequestApproval} />
+       <Stack.Screen name="RequestPage" component={RequestPage} />
+
+
     </Tab.Navigator>
   );
 }

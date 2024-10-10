@@ -7,7 +7,8 @@ const InitialLogin = ({ setUserType = () => {} }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>Login</Text>
+      <Text style={{ ...styles.header, color: 'deeppink' }}>Fashion</Text>
+      <Text style={{ ...styles.header, marginBottom:10, color: 'black' }}>Seeker</Text>
 
       {/* 버튼들 */}
       <View style={styles.buttonContainer}>
@@ -26,7 +27,7 @@ const InitialLogin = ({ setUserType = () => {} }) => {
         </TouchableOpacity>
       </View>
 
-      <View style={styles.textButtonContainer}>
+      <View style={{ ...styles.textButtonContainer, marginBottom:20}}>
         <TouchableOpacity onPress={() => { /* 비밀번호찾기 기능 */ }}>
           <Text style={styles.textButton}>비밀번호 찾기     </Text>
         </TouchableOpacity>
@@ -58,9 +59,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   header: {
-    fontSize: 30,
-    fontWeight: 'bold',
-    marginBottom: 10,
+    fontSize: 50,
+    fontWeight: '900',
+    color:'Black',
   },
   subHeader: {
     fontSize: 20,

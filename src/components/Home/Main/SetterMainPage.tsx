@@ -19,7 +19,8 @@ const SetterMainPage = () => {
 
       {/* 버튼들 */}
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button}
+           onPress={() => navigation.navigate('RequestApproval')} >
           <Text style={styles.buttonText}> 요청서 수락하기</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.button}>
@@ -32,11 +33,9 @@ const SetterMainPage = () => {
       <View style={styles.buttonContainer}>
         <TouchableOpacity
          style={styles.button}
-         onPress={() => navigation.navigate('MyPageTabView')}
           >
            <Text style={styles.buttonText}>마이페이지</Text>
         </TouchableOpacity>
-
       </View>
 
 
