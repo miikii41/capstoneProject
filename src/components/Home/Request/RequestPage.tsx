@@ -1,39 +1,42 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   View,
   Text,
-  TouchableOpacity,
   StyleSheet,
-  Switch,
   ScrollView,
+  Alert,
 } from "react-native";
+import { StackScreenProps } from '@react-navigation/stack';
+import { HomeStackParams } from '../../../pages/Home'; // 네비게이션 타입 추가
 
-const RequestPage = () => {
-  // 상태 관리
-  const [selectedPlace, setSelectedPlace] = useState(null);
-  const [selectedSeason, setSelectedSeason] = useState(null);
-  const [selectedWeather, setSelectedWeather] = useState(null);
-  const [selectedStyle, setSelectedStyle] = useState(null);
-  const [selectedWith, setSelectedWith] = useState(null);
-  const [isBodyPublic, setIsBodyPublic] = useState(false);
-  const [isComplexPublic, setIsComplexPublic] = useState(false);
+const RequestPage = ({ route, navigation }: StackScreenProps<HomeStackParams, 'RequestPage'>) => {
+  // RequestPage에서 전달된 데이터 가져오기
+  const params = route?.params || {};
+  const {
+    selectedPlace = "공원",
+    selectedSeason = "spring/fall",
+    selectedWeather = "비",
+    selectedStyle = "캐주얼",
+    selectedWith = "친구",
+    isBodyPublic = false,
+    isComplexPublic = false,
+    additionalRequest = "None",
+  } = params;
 
   return (
-    <ScrollView>
-    <View style={styles.container}>
-      <Text style={styles.header}>Request</Text>
+    <ScrollView style={styles.container}>
+      <Text style={styles.header}>Request Confirmation</Text>
 
       {/* Place Section */}
       <Text style={styles.sectionTitle}>Place</Text>
       <View style={styles.buttonGroup}>
         {["공원", "레스토랑", "카페", "여행", "학교", "기타"].map((place) => (
-          <TouchableOpacity
+          <View
             key={place}
             style={[
               styles.button,
               selectedPlace === place && styles.selectedButton,
             ]}
-            onPress={() => setSelectedPlace(place)} // 선택된 항목으로 상태 업데이트
           >
             <Text
               style={[
@@ -43,7 +46,7 @@ const RequestPage = () => {
             >
               {place}
             </Text>
-          </TouchableOpacity>
+          </View>
         ))}
       </View>
 
@@ -51,13 +54,12 @@ const RequestPage = () => {
       <Text style={styles.sectionTitle}>Season</Text>
       <View style={styles.buttonGroup}>
         {["spring/fall", "summer", "winter"].map((season) => (
-          <TouchableOpacity
+          <View
             key={season}
             style={[
               styles.button,
               selectedSeason === season && styles.selectedButton,
             ]}
-            onPress={() => setSelectedSeason(season)} // 선택된 항목으로 상태 업데이트
           >
             <Text
               style={[
@@ -67,21 +69,20 @@ const RequestPage = () => {
             >
               {season}
             </Text>
-          </TouchableOpacity>
+          </View>
         ))}
       </View>
 
-     {/* Weather Section */}
+      {/* Weather Section */}
       <Text style={styles.sectionTitle}>Weather</Text>
       <View style={styles.buttonGroup}>
         {["비", "바람", "눈", "습함"].map((weather) => (
-          <TouchableOpacity
+          <View
             key={weather}
             style={[
               styles.button,
               selectedWeather === weather && styles.selectedButton,
             ]}
-            onPress={() => setSelectedWeather(weather)} // 선택된 항목으로 상태 업데이트
           >
             <Text
               style={[
@@ -91,33 +92,20 @@ const RequestPage = () => {
             >
               {weather}
             </Text>
-          </TouchableOpacity>
+          </View>
         ))}
       </View>
-
 
       {/* Style Section */}
       <Text style={styles.sectionTitle}>Style</Text>
       <View style={styles.buttonGroup}>
-        {[
-          "캐주얼",
-          "비즈니스",
-          "포멀",
-          "스포티",
-          "스트리트",
-          "미니멀",
-          "빈티지",
-          "페미닌",
-          "힙",
-          "기타",
-        ].map((style) => (
-          <TouchableOpacity
+        {["캐주얼", "비즈니스", "포멀", "스포티", "스트리트", "미니멀", "빈티지", "페미닌", "힙", "기타"].map((style) => (
+          <View
             key={style}
             style={[
               styles.button,
               selectedStyle === style && styles.selectedButton,
             ]}
-            onPress={() => setSelectedStyle(style)} // 선택된 항목으로 상태 업데이트
           >
             <Text
               style={[
@@ -127,7 +115,7 @@ const RequestPage = () => {
             >
               {style}
             </Text>
-          </TouchableOpacity>
+          </View>
         ))}
       </View>
 
@@ -135,13 +123,12 @@ const RequestPage = () => {
       <Text style={styles.sectionTitle}>With</Text>
       <View style={styles.buttonGroup}>
         {["친구", "연인", "가족", "비즈니스", "기타"].map((withWho) => (
-          <TouchableOpacity
+          <View
             key={withWho}
             style={[
               styles.button,
               selectedWith === withWho && styles.selectedButton,
             ]}
-            onPress={() => setSelectedWith(withWho)} // 선택된 항목으로 상태 업데이트
           >
             <Text
               style={[
@@ -151,29 +138,28 @@ const RequestPage = () => {
             >
               {withWho}
             </Text>
-          </TouchableOpacity>
+          </View>
         ))}
       </View>
 
-       {/* Toggle Switches */}
+      {/* Toggle Switches */}
       <View style={styles.switchContainer}>
         <View style={styles.switchRow}>
           <Text style={styles.switchLabel}>체형 공개</Text>
-          <Switch
-            value={isBodyPublic}
-            onValueChange={(value) => setIsBodyPublic(value)}
-          />
+          <Text style={styles.value}>{isBodyPublic ? 'Yes' : 'No'}</Text>
         </View>
 
         <View style={styles.switchRow}>
           <Text style={styles.switchLabel}>컴플렉스 공개</Text>
-          <Switch
-            value={isComplexPublic}
-            onValueChange={(value) => setIsComplexPublic(value)}
-          />
+          <Text style={styles.value}>{isComplexPublic ? 'Yes' : 'No'}</Text>
         </View>
       </View>
-    </View>
+
+      {/* Additional Request Section */}
+      <Text style={styles.sectionTitle}>추가 요청사항</Text>
+      <View style={styles.additionalRequestContainer}>
+        <Text style={styles.value}>{additionalRequest}</Text>
+      </View>
     </ScrollView>
   );
 };
@@ -189,13 +175,13 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     textAlign: "center",
     marginBottom: 35,
-    color :'black',
+    color: 'black',
   },
   sectionTitle: {
     fontSize: 18,
     fontWeight: "bold",
     marginBottom: 10,
-    color : 'black'
+    color: 'black'
   },
   buttonGroup: {
     flexDirection: "row",
@@ -218,12 +204,12 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontWeight: "bold",
   },
-    switchLabel: {
-      fontSize: 18,
-      fontWeight: "bold",
-      marginBottom: 10,
-      color: "#000",
-    },
+  switchLabel: {
+    fontSize: 18,
+    fontWeight: "bold",
+    marginBottom: 10,
+    color: "#000",
+  },
   switchContainer: {
     marginTop: 20,
   },
@@ -232,6 +218,17 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     alignItems: "center",
     marginBottom: 10,
+  },
+  value: {
+    fontSize: 16,
+    color: "#666",
+  },
+  additionalRequestContainer: {
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 8,
+    padding: 10,
+    marginBottom: 100,
   },
 });
 
