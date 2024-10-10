@@ -33,7 +33,7 @@ const SetterMainPage = () => {
       <View style={styles.buttonContainer}>
         <TouchableOpacity
          style={styles.button}
-           onPress={() => navigation.navigate('MyPageTabView')} >
+          >
            <Text style={styles.buttonText}>마이페이지</Text>
         </TouchableOpacity>
       </View>

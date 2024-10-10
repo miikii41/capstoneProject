@@ -42,16 +42,6 @@ const SeekerMainPage = () => {
            <Text style={styles.buttonText}>캘린더</Text>
         </TouchableOpacity>
       </View>
-
-
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity
-         style={styles.button} >
-           <Text style={styles.buttonText}>프로필 수정</Text>
-        </TouchableOpacity>
-      </View>
-
-
     </View>
   );
 };
