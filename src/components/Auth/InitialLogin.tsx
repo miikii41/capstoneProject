@@ -31,8 +31,9 @@ const InitialLogin = ({ setUserType = () => {} }) => {
         <TouchableOpacity onPress={() => { /* 비밀번호찾기 기능 */ }}>
           <Text style={styles.textButton}>비밀번호 찾기     </Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => { /* 회원가입 기능 */ }}>
-          <Text style={styles.textButton}>  회원가입</Text>
+        <TouchableOpacity onPress={() => navigation.navigate('ChooseUserType')}
+        >
+        <Text style={styles.textButton}>  회원가입</Text>
         </TouchableOpacity>
       </View>
 

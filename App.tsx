@@ -11,6 +11,7 @@ import MyPageTabView from './src/components/Home/MyPage/MyPageTabView';
 import PortfolioPage from './src/components/Home/MyPage/PortfolioPage';
 import Review from './src/components/Home/MyPage/Review';
 import InitialLogin from './src/components/Auth/InitialLogin';
+import ChooseUserType from './src/components/Auth/ChooseUserType';
 import SeekerLogin from './src/components/Auth/Seeker/SeekerLogin';
 import SetterLogin from './src/components/Auth/Setter/SetterLogin';
 import WeatherProvider from './src/contexts/WeatherProvider'; // 새로 추가한 WeatherProvider
@@ -69,6 +70,8 @@ function GuestNavigator({ setUserType }) {
       <Stack.Screen name="SeekerLogin" component={SeekerLogin} />
       <Stack.Screen name="SetterLogin" component={SetterLogin} />
       <Stack.Screen name="MainPage" component={MainPage} />
+      <Stack.Screen name="ChooseUserType" component={ChooseUserType} />
+
     </Stack.Navigator>
   );
 }
