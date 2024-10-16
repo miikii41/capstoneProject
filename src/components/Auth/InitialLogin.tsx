@@ -10,7 +10,7 @@ const InitialLogin = ({ setUserType = () => {} }) => {
       <Text style={{ ...styles.header, color: 'deeppink' }}>Fashion</Text>
       <Text style={{ ...styles.header, marginBottom:10, color: 'black' }}>Seeker</Text>
 
-      {/* 버튼들 */}
+
       <View style={styles.buttonContainer}>
         <TouchableOpacity
           style={styles.button}
@@ -31,24 +31,18 @@ const InitialLogin = ({ setUserType = () => {} }) => {
         <TouchableOpacity onPress={() => { /* 비밀번호찾기 기능 */ }}>
           <Text style={styles.textButton}>비밀번호 찾기     </Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => navigation.navigate('ChooseUserType')}
-        >
-        <Text style={styles.textButton}>  회원가입</Text>
-        </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate('ChooseUserType')}>
+        <Text style={styles.textButton}>회원가입</Text>
+      </TouchableOpacity>
       </View>
 
-      {/* 사용자 타입 설정 버튼들 */}
+
       <TouchableOpacity style={styles.button} onPress={() => { setUserType('seeker'); }}>
         <Text style={styles.buttonText}>Seeker</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.button} onPress={() => { setUserType('setter'); }}>
         <Text style={styles.buttonText}>Setter</Text>
       </TouchableOpacity>
-
-      <TouchableOpacity style={styles.button} onPress={() => { setUserType('guest'); navigation.navigate('MainPage'); }}>
-        <Text style={styles.buttonText}>Guest</Text>
-      </TouchableOpacity>
-
     </View>
   );
 };
