@@ -3,7 +3,6 @@ import { SafeAreaView, StatusBar, StyleSheet, useColorScheme } from 'react-nativ
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import MainPage from './src/components/Home/Main/MainPage';
 import SeekerMainPage from './src/components/Home/Main/SeekerMainPage';
 import SetterMainPage from './src/components/Home/Main/SetterMainPage';
 import MyPageHome from './src/components/Home/MyPage/MyPageHome';
@@ -14,6 +13,12 @@ import InitialLogin from './src/components/Auth/InitialLogin';
 import ChooseUserType from './src/components/Auth/ChooseUserType';
 import SeekerLogin from './src/components/Auth/Seeker/SeekerLogin';
 import SetterLogin from './src/components/Auth/Setter/SetterLogin';
+import SeekerSignup from './src/components/Auth/SeekerSignup';
+import SetterSignup from './src/components/Auth/SetterSignup';
+import StyleSelection from './src/components/Auth/StyleSelection';
+import StyleResult from './src/components/Auth/StyleResult';
+import BodyType from './src/components/Auth/BodyType';
+import Congratulations from './src/components/Auth/Congratulations';
 import WeatherProvider from './src/contexts/WeatherProvider'; // 새로 추가한 WeatherProvider
 import WeatherPage from "./src/components/Weather/WeatherPage"; // WeatherPage를 추가
 import RequestPage from './src/components/Home/Request/RequestPage';
@@ -58,25 +63,32 @@ function SetterNavigator() {
   );
 }
 
-// Guest (로그인 전) 네비게이터
+// (로그인 전) 네비게이터
 function GuestNavigator({ setUserType }) {
+  // InitialLoginScreen 함수 컴포넌트 정의
+  const InitialLoginScreen = (props) => <InitialLogin {...props} setUserType={setUserType} />;
+
   return (
-    <Stack.Navigator>
+    <Stack.Navigator initialRouteName="InitialLogin">
       <Stack.Screen
         name="InitialLogin"
         options={{ headerShown: false }}
-        component={(props) => <InitialLogin {...props} setUserType={setUserType} />} // component prop 사용하여 수정
+        component={InitialLoginScreen} // 인라인 함수 대신 컴포넌트로 전달
       />
       <Stack.Screen name="SeekerLogin" component={SeekerLogin} />
       <Stack.Screen name="SetterLogin" component={SetterLogin} />
-      <Stack.Screen name="MainPage" component={MainPage} />
       <Stack.Screen name="ChooseUserType" component={ChooseUserType} />
-
+      <Stack.Screen name="SeekerSignup" component={SeekerSignup} />
+      <Stack.Screen name="SetterSignup" component={SetterSignup} />
+      <Stack.Screen name="StyleSelection" component={StyleSelection} />
+      <Stack.Screen name="StyleResult" component={StyleResult} />
+      <Stack.Screen name="BodyType" component={BodyType} />
+      <Stack.Screen name="Congratulations" component={Congratulations} />
     </Stack.Navigator>
   );
 }
 
-function App(): React.JSX.Element {
+function App() {
   const isDarkMode = useColorScheme() === 'dark';
   const [userType, setUserType] = useState<'guest' | 'seeker' | 'setter'>('guest'); // 임시 사용자 상태
 
@@ -99,6 +111,7 @@ function App(): React.JSX.Element {
     </NavigationContainer>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {
