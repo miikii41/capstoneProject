@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, StyleSheet, TouchableOpacity, Alert, Picker  } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 const SeekerSignup = () => {
