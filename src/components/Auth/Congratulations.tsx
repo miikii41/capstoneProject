@@ -1,26 +1,21 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-const ChooseUserType = () => {
-  const navigation = useNavigation(); // 네비게이션 객체 사용
+const Congratulations = () => {
+  const navigation = useNavigation();
+
+  const goToHome = () => {
+    navigation.navigate('InitialLogin'); // 홈 화면으로 돌아가기
+  };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>Create As</Text>
+      <Text style={styles.message}>Dora님!</Text>
+      <Text style={styles.subMessage}>Seeker가 되신 것을 축하드립니다</Text>
 
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => navigation.navigate('SeekerSignup')}
-      >
-        <Text style={styles.buttonText}>Seeker</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => navigation.navigate('SetterSignUp')}  // Setter 회원가입 페이지로 이동
-      >
-        <Text style={styles.buttonText}>Setter</Text>
+      <TouchableOpacity style={styles.button} onPress={goToHome}>
+        <Text style={styles.buttonText}>홈 화면으로 가기</Text>
       </TouchableOpacity>
     </View>
   );
@@ -31,26 +26,31 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    padding: 20,
   },
-  header: {
-    fontSize: 40,
+  message: {
+    fontSize: 24,
     fontWeight: 'bold',
-    marginBottom: 40,
+    marginBottom: 10,
+    color: 'deeppink',
+  },
+  subMessage: {
+    fontSize: 18,
+    marginBottom: 30,
+    color: 'black',
   },
   button: {
-    backgroundColor: '#e0e0e0',
+    backgroundColor: 'deeppink',
     padding: 15,
-    borderRadius: 10,
-    margin: 10,
+    borderRadius: 5,
     alignItems: 'center',
     justifyContent: 'center',
-    width: 200,
-    height: 60,
   },
   buttonText: {
+    color: 'white',
     fontSize: 18,
     fontWeight: 'bold',
   },
 });
 
-export default ChooseUserType;
+export default Congratulations;
