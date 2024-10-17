@@ -1,4 +1,3 @@
-
 import React, { useState, Fragment, useContext, createContext } from 'react';
 import { SafeAreaView, View, Dimensions, TextInput, TouchableOpacity, Alert, Text } from 'react-native';
 
@@ -155,3 +154,4 @@ export function LoginProvider({ children }: { children: React.ReactNode }) {
     </LoginContext.Provider>
   );
 }
+
