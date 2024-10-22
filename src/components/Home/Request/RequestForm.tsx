@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -8,15 +8,18 @@ import {
   ScrollView,
   Alert,
   TextInput,
+  Image,
 } from "react-native";
-import { StackScreenProps } from '@react-navigation/stack';
 import { useNavigation } from '@react-navigation/native';
+import PhotoOptions, { PhotoResultProps } from '../../../common/PhotoOptions';
 import BottomButton from '../../../common/BottomButton';
 
 const RequestForm = () => {
   const navigation = useNavigation(); // 네비게이션 객체 사용
 
   // 상태 관리
+  const [photos, setPhotos] = useState<PhotoResultProps[]>([]);
+  const [refPhotos, setRefPhotos] = useState<PhotoResultProps[]>([]);
   const [selectedPlace, setSelectedPlace] = useState<string | null>(null);
   const [selectedSeason, setSelectedSeason] = useState<string | null>(null);
   const [selectedWeather, setSelectedWeather] = useState<string | null>(null);
@@ -25,6 +28,11 @@ const RequestForm = () => {
   const [isBodyPublic, setIsBodyPublic] = useState(false);
   const [isComplexPublic, setIsComplexPublic] = useState(false);
   const [additionalRequest, setAdditionalRequest] = useState<string>('');
+
+  // 디버깅을 위해 photos 상태가 업데이트될 때마다 출력
+  useEffect(() => {
+    console.log('Updated photos:', photos);
+  }, [photos]);
 
   // 다음 페이지로 데이터를 전달하는 함수
   const handleNextPress = () => {
@@ -42,13 +50,49 @@ const RequestForm = () => {
       isBodyPublic,
       isComplexPublic,
       additionalRequest,
+      photos,
     });
   };
 
   return (
     <ScrollView>
       <View style={styles.container}>
-        <Text style={styles.header}>Request </Text>
+        <Text style={styles.header}>Request</Text>
+
+        <Text style={styles.sectionTitle}>Clothes</Text>
+
+        <View style={{ marginTop: 10, marginLeft: 120, marginRight: 120 }}>
+          <PhotoOptions
+            style={Object.assign({}, styles.grayButton, { marginRight: 5, marginBottom: 5 })}
+            max={4}
+            setPhoto={(newPhotos) => {
+              // 새로운 사진 배열을 { uri: ... } 형태로 변환
+              const formattedPhotos = newPhotos.map(photo => {
+                // photo가 단순 문자열일 경우 객체로 변환
+                if (typeof photo === 'string') {
+                  return { uri: photo };
+                }
+                // 이미 객체인 경우 그대로 사용
+                return photo;
+              });
+
+              // 기존 사진 배열에 새 사진을 추가
+              setPhotos(prevPhotos => [...prevPhotos, ...formattedPhotos]);
+            }}
+            buttonLabel='Select Photos'
+          />
+        </View>
+
+        {/* 선택한 사진들을 화면에 렌더링 */}
+        <View style={styles.photosContainer}>
+          {photos.map((photo, index) => (
+            <Image
+              key={index}
+              source={{ uri: photo.uri }}
+              style={styles.photo}
+            />
+          ))}
+        </View>
 
         {/* Place Section */}
         <Text style={styles.sectionTitle}>Place</Text>
@@ -208,6 +252,8 @@ const RequestForm = () => {
   );
 };
 
+
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -227,6 +273,17 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     color: 'black'
   },
+  photosContainer: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    marginVertical: 10,
+  },
+  photo: {
+    width: 100,
+    height: 100,
+    borderRadius: 10,
+    margin: 5,
+  },
   buttonGroup: {
     flexDirection: "row",
     flexWrap: "wrap",
@@ -245,23 +302,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   selectedButtonText: {
-    color: "#fff",
-    fontWeight: "bold",
-  },
-  switchLabel: {
-    fontSize: 18,
-    fontWeight: "bold",
-    marginBottom: 10,
-    color: "#000",
-  },
-  switchContainer: {
-    marginTop: 20,
-  },
-  switchRow: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginBottom: 10,
+    color: 'white',
   },
   inputBox: {
     borderWidth: 1,
@@ -271,6 +312,15 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#333',
     marginBottom: 20,
+  },
+  grayButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 16,
+    backgroundColor: '#e0e0e0',
+    borderRadius: 6,
+    marginBottom: 20,
+    paddingVertical: 6,
   },
 });
 
