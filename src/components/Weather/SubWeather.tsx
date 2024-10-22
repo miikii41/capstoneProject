@@ -13,13 +13,12 @@ interface  WeatherContextType {
 
           function SubWeather() {
             // WeatherContext에서 필요한 상태를 받아옴
-            const { sunrise, speed, humidity } = useContext<WeatherContextType>(WeatherContext);
             const { sunrise, sunset, speed, humidity } = useContext<WeatherContextType>(WeatherContext);
 
             // 일출 시간을 초에서 밀리세컨드로 변환하여 표시
             const formattedSunrise = sunrise
 
-          @@ -23,6 +24,16 @@ function SubWeather() {
+            function SubWeather() {
                 })
               : "N/A";
 
