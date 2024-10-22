@@ -12,8 +12,9 @@ import Review from './src/components/Home/MyPage/Review';
 import InitialLogin from './src/components/Auth/InitialLogin';
 import ChooseUserType from './src/components/Auth/ChooseUserType';
 import SeekerLogin from './src/components/Auth/Seeker/SeekerLogin';
-import LoginComplete from './src/components/Auth/Seeker/LoginComplete';
+import SeekerComplete from './src/components/Auth/Seeker/SeekerComplete';
 import SetterLogin from './src/components/Auth/Setter/SetterLogin';
+import SetterComplete from './src/components/Auth/Setter/SetterComplete';
 import SeekerSignup from './src/components/Auth/SeekerSignup';
 import SetterSignup from './src/components/Auth/SetterSignup';
 import StyleSelection from './src/components/Auth/StyleSelection';
@@ -25,7 +26,7 @@ import WeatherPage from "./src/components/Weather/WeatherPage"; // WeatherPage�
 import RequestPage from './src/components/Home/Request/RequestPage';
 import RequestApproval from './src/components/Home/Request/RequestApproval';
 import RequestForm from './src/components/Home/Request/RequestForm';
-
+import RequestAccepted from './src/components/Home/Request/RequestAccepted';
 
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 
@@ -42,6 +43,7 @@ function SeekerNavigator() {
       <Tab.Screen name="WeatherPage" component={WeatherPage} />
       <Stack.Screen name="RequestApproval" component={RequestApproval} />
       <Stack.Screen name="RequestPage" component={RequestPage} />
+      <Stack.Screen name="RequestAccepted" component={RequestAccepted} />
 
 
     </Tab.Navigator>
@@ -58,6 +60,7 @@ function SetterNavigator() {
        <Stack.Screen name="MyPageTabView" component={MyPageTabView} />
        <Stack.Screen name="RequestApproval" component={RequestApproval} />
        <Stack.Screen name="RequestPage" component={RequestPage} />
+       <Stack.Screen name="RequestAccepted" component={RequestAccepted} />
 
 
     </Tab.Navigator>
@@ -77,8 +80,9 @@ function GuestNavigator({ setUserType }) {
         component={InitialLoginScreen} // 인라인 함수 대신 컴포넌트로 전달
       />
       <Stack.Screen name="SeekerLogin" component={SeekerLogin} />
-      <Stack.Screen name="LoginComplete" component={LoginComplete} />
+      <Stack.Screen name="SeekerComplete" component={SeekerComplete} />
       <Stack.Screen name="SetterLogin" component={SetterLogin} />
+       <Stack.Screen name="SetterComplete" component={SetterComplete} />
       <Stack.Screen name="ChooseUserType" component={ChooseUserType} />
       <Stack.Screen name="SeekerSignup" component={SeekerSignup} />
       <Stack.Screen name="SetterSignup" component={SetterSignup} />

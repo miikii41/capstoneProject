@@ -13,14 +13,14 @@ const RequestPage = ({ route, navigation }: StackScreenProps<HomeStackParams, 'R
   // RequestPage에서 전달된 데이터 가져오기
   const params = route?.params || {};
   const {
-    selectedPlace = "공원",
+    selectedPlace = "학교",
     selectedSeason = "spring/fall",
     selectedWeather = "비",
-    selectedStyle = "캐주얼",
-    selectedWith = "친구",
-    isBodyPublic = false,
-    isComplexPublic = false,
-    additionalRequest = "None",
+    selectedStyle = "비즈니스",
+    selectedWith = "비즈니스",
+    isBodyPublic = true,
+    isComplexPublic = true,
+    additionalRequest = "전문성 있게",
   } = params;
 
   return (
