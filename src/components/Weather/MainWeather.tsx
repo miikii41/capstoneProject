@@ -3,6 +3,7 @@ import { WeatherContext } from "../../contexts/WeatherProvider"; // WeatherConte
 import MainWeatherIcon from "../../common/MainWeatherIcon"; // 날씨 아이콘 컴포넌트
 import dayjs from "dayjs";
 import { View, Text, StyleSheet } from "react-native"; // React Native 컴포넌트
+import TemperatureGraph from "../../contexts/TemperatureGraph";
 
 // 날씨 데이터에 대한 타입 정의
 interface WeatherContextType {
@@ -23,9 +24,15 @@ function MainWeather() {
       {/* 도시 이름 */}
       <Text style={styles.city}>{name?.toUpperCase()}</Text>
 
+            {/* 요일과 시간 표시 */}
+            <View style={styles.today}>
+              <Text>{dayjs().format("dddd").toUpperCase()}</Text>
+              <Text>{dayjs().format("H:mm A")}</Text>
+            </View>
+
       {/* 날씨 아이콘 */}
       <View style={styles.weatherIcon}>
-        <MainWeatherIcon weatherState={weatherState} viewBox="0 0 30 30" />
+        <MainWeatherIcon weatherState={weatherState} size={60} viewBox="0 0 30 30" />
       </View>
 
       {/* 현재 온도 및 상세 날씨 정보 */}
@@ -39,11 +46,8 @@ function MainWeather() {
         </View>
       </View>
 
-      {/* 요일과 시간 표시 */}
-      <View style={styles.today}>
-        <Text>{dayjs().format("dddd").toUpperCase()}</Text>
-        <Text>{dayjs().format("H:mm A")}</Text>
-      </View>
+
+
     </View>
   );
 }
@@ -54,7 +58,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   city: {
-    fontSize: 24,
+    marginTop:50,
+    fontSize: 40,
     fontWeight: "bold",
   },
   weatherIcon: {
@@ -62,12 +67,16 @@ const styles = StyleSheet.create({
   },
   detailWeather: {
     alignItems: "center",
+
   },
   temp: {
     fontSize: 32,
     fontWeight: "bold",
+    color:'black',
   },
   detailItem: {
+
+    fontSize: 25,
     flexDirection: "row",
     justifyContent: "space-between",
     marginTop: 5,
