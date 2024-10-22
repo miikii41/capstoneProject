@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-const LoginComplete = () => {
+const SeekerComplete = () => {
   const navigation = useNavigation();
 
   const goToHome = () => {
@@ -12,7 +12,7 @@ const LoginComplete = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.message}>Dora님!</Text>
-      <Text style={styles.subMessage}>Seeker가 되어 패셔니스타가 되어봐요</Text>
+      <Text style={styles.subMessage}>Fashion Seeker가 되어봐요</Text>
 
       <TouchableOpacity style={styles.button} onPress={goToHome}>
         <Text style={styles.buttonText}>홈 화면으로 가기</Text>
@@ -53,4 +53,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LoginComplete;
+export default SeekerComplete;
