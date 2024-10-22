@@ -12,7 +12,7 @@ import PortfolioPage from './PortfolioPage';
 import Review from './Review';
 
 export const ProfileSection = ({ navigation }: { navigation: any }) => {
-  const UserName = '닉네임';
+  const UserName = '세터';
   const instagramURL = 'https://www.instagram.com/fashion_seek_/?utm_source=ig_web_button_share_sheet';
   const blogURL = 'https://section.blog.naver.com/BlogHome.naver?directoryNo=0&currentPage=1&groupId=0';
 
