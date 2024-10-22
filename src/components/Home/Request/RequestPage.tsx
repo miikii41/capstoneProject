@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
   StyleSheet,
   ScrollView,
   Alert,
+  Image,
 } from "react-native";
 import { StackScreenProps } from '@react-navigation/stack';
 import { HomeStackParams } from '../../../pages/Home'; // 네비게이션 타입 추가
@@ -13,6 +14,8 @@ const RequestPage = ({ route, navigation }: StackScreenProps<HomeStackParams, 'R
   // RequestPage에서 전달된 데이터 가져오기
   const params = route?.params || {};
   const {
+
+    
     selectedPlace = "학교",
     selectedSeason = "spring/fall",
     selectedWeather = "비",
@@ -23,9 +26,33 @@ const RequestPage = ({ route, navigation }: StackScreenProps<HomeStackParams, 'R
     additionalRequest = "전문성 있게",
   } = params;
 
+
+useEffect(() => {
+  console.log('Received photos:', photos);
+}, [photos]);
+
+
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.header}>Request Confirmation</Text>
+
+
+      {/* 선택된 사진들을 화면에 렌더링 */}
+      {photos.length > 0 && (
+        <>
+          <Text style={styles.sectionTitle}>Selected Photos</Text>
+          <View style={styles.photosContainer}>
+            {photos.map((photo, index) => (
+              <Image
+                key={index}
+                source={{ uri: photo.uri }}
+                style={styles.photo}
+              />
+            ))}
+          </View>
+        </>
+      )}
+
 
       {/* Place Section */}
       <Text style={styles.sectionTitle}>Place</Text>
@@ -230,6 +257,14 @@ const styles = StyleSheet.create({
     padding: 10,
     marginBottom: 100,
   },
+  photo: {
+    width: 100, // 충분히 큰 값으로 설정
+    height: 100,
+    borderRadius: 10,
+    margin: 5,
+    backgroundColor: 'red',
+  },
+
 });
 
 export default RequestPage;
