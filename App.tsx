@@ -44,6 +44,7 @@ function SeekerNavigator() {
       <Stack.Screen name="RequestApproval" component={RequestApproval} />
       <Stack.Screen name="RequestPage" component={RequestPage} />
       <Stack.Screen name="RequestAccepted" component={RequestAccepted} />
+      <Stack.Screen name="InitialLogin" component={InitialLogin} />
 
 
     </Tab.Navigator>
