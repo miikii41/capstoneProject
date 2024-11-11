@@ -27,6 +27,7 @@ import RequestPage from './src/components/Home/Request/RequestPage';
 import RequestApproval from './src/components/Home/Request/RequestApproval';
 import RequestForm from './src/components/Home/Request/RequestForm';
 import RequestAccepted from './src/components/Home/Request/RequestAccepted';
+import ClosetMain from './src/components/Closet/ClosetMain';
 
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 
@@ -45,6 +46,8 @@ function SeekerNavigator() {
       <Stack.Screen name="RequestPage" component={RequestPage} />
       <Stack.Screen name="RequestAccepted" component={RequestAccepted} />
       <Stack.Screen name="InitialLogin" component={InitialLogin} />
+      <Stack.Screen name="ClosetMain" component={ClosetMain} />
+
 
 
     </Tab.Navigator>
