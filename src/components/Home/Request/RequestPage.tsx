@@ -24,6 +24,7 @@ const RequestPage = ({ route, navigation }: StackScreenProps<HomeStackParams, 'R
     isBodyPublic = true,
     isComplexPublic = true,
     additionalRequest = "전문성 있게",
+    photos =[],
   } = params;
 
 
@@ -258,8 +259,9 @@ const styles = StyleSheet.create({
     marginBottom: 100,
   },
   photo: {
-    width: 100, // 충분히 큰 값으로 설정
-    height: 100,
+    width: 130,
+    height: 130,
+    alignItems: 'center',
     borderRadius: 10,
     margin: 5,
     backgroundColor: 'red',
