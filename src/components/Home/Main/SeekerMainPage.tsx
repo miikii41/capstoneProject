@@ -36,7 +36,7 @@ const SeekerMainPage = () => {
 
       <View style={styles.buttonContainer}>
         <TouchableOpacity style={styles.button}
-            onPress={() => navigation.navigate('ClosetMain')}
+            onPress={() => navigation.navigate('AddCloset')}
          >
           <Text style={styles.buttonText}>Closet</Text>
         </TouchableOpacity>
