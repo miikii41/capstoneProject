@@ -38,38 +38,34 @@ const Tab = createBottomTabNavigator();
 // Seeker 전용 네비게이터
 function SeekerNavigator() {
   return (
-    <Tab.Navigator>
-      <Tab.Screen name="SeekerMainPage" component={SeekerMainPage} />
-      <Tab.Screen name="RequestForm" component={RequestForm} />
-      <Tab.Screen name="WeatherPage" component={WeatherPage} />
+    <Stack.Navigator>
+      <Stack.Screen name="SeekerMainPage" component={SeekerMainPage} />
+      <Stack.Screen name="RequestForm" component={RequestForm} />
+      <Stack.Screen name="WeatherPage" component={WeatherPage} />
       <Stack.Screen name="RequestApproval" component={RequestApproval} />
       <Stack.Screen name="RequestPage" component={RequestPage} />
       <Stack.Screen name="RequestAccepted" component={RequestAccepted} />
       <Stack.Screen name="InitialLogin" component={InitialLogin} />
       <Stack.Screen name="ClosetMain" component={ClosetMain} />
-
-
-
-    </Tab.Navigator>
+    </Stack.Navigator>
   );
 }
 
 // Setter 전용 네비게이터
 function SetterNavigator() {
   return (
-    <Tab.Navigator>
-      <Tab.Screen name="SetterMainPage" component={SetterMainPage} />
-      <Tab.Screen name="PortfolioPage" component={PortfolioPage} />
-      <Tab.Screen name="Review" component={Review} />
-       <Stack.Screen name="MyPageTabView" component={MyPageTabView} />
-       <Stack.Screen name="RequestApproval" component={RequestApproval} />
-       <Stack.Screen name="RequestPage" component={RequestPage} />
-       <Stack.Screen name="RequestAccepted" component={RequestAccepted} />
-
-
-    </Tab.Navigator>
+    <Stack.Navigator>
+      <Stack.Screen name="SetterMainPage" component={SetterMainPage} />
+      <Stack.Screen name="PortfolioPage" component={PortfolioPage} />
+      <Stack.Screen name="Review" component={Review} />
+      <Stack.Screen name="MyPageTabView" component={MyPageTabView} />
+      <Stack.Screen name="RequestApproval" component={RequestApproval} />
+      <Stack.Screen name="RequestPage" component={RequestPage} />
+      <Stack.Screen name="RequestAccepted" component={RequestAccepted} />
+    </Stack.Navigator>
   );
 }
+
 
 // (로그인 전) 네비게이터
 function GuestNavigator({ setUserType }) {
