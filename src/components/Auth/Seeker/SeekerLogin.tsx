@@ -1,4 +1,3 @@
-
 import React, { useState, Fragment, useContext, createContext } from 'react';
 import { SafeAreaView, View, Dimensions, TextInput, TouchableOpacity, Alert, Text } from 'react-native';
 
@@ -89,7 +88,7 @@ export default function Login({ navigation }: LoginProps) {
     const response = await request.post(`/api/user/login`, form);
     processLoginResponse(
       response,
-      () => navigation.navigate('Home'),
+      () => navigation.navigate('SeekerComplete'),
       setLogin
     );
   };
@@ -155,3 +154,4 @@ export function LoginProvider({ children }: { children: React.ReactNode }) {
     </LoginContext.Provider>
   );
 }
+

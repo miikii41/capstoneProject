@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, StyleSheet, TouchableOpacity, Alert, Picker  } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 const SeekerSignup = () => {
@@ -61,7 +61,10 @@ const SeekerSignup = () => {
         placeholder="이메일 입력"
         value={id}
         onChangeText={setId}
-      />
+
+          autoCompleteType="off" // Disable auto-fill
+          autoComplete="off" // Newer React Native versions
+          textContentType="none" // Disable auto-fill
 
 
       <TextInput
@@ -70,7 +73,10 @@ const SeekerSignup = () => {
         secureTextEntry
         value={password}
         onChangeText={(text) => validatePassword(text)}
-      />
+
+          autoCompleteType="off" // Disable auto-fill
+            autoComplete="off" // Newer React Native versions
+          textContentType="none" // Disable auto-fill
       {passwordError ? <Text style={styles.errorText}>{passwordError}</Text> : null}
 
 

@@ -91,9 +91,18 @@ const WeatherProvider = ({ children }: WeatherProviderProps) => {
   };
 
   useEffect(() => {
-    getWeatherInfo();
-  }, []); // 컴포넌트가 마운트될 때 API 호출
 
+    // 컴포넌트가 마운트될 때 한 번 날씨 정보 호출
+    getWeatherInfo();
+
+    // 1분마다(getWeatherInfo) 호출
+    const interval = setInterval(() => {
+      getWeatherInfo();
+    }, 1 * 60 * 1000); // 1분 = 60초 * 1000밀리초
+
+    // 컴포넌트가 언마운트될 때 인터벌 정리
+    return () => clearInterval(interval);
+  }, []);
   return (
     <WeatherContext.Provider value={{ ...weatherInfo }}>
       {children}

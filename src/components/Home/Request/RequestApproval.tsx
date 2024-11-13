@@ -1,10 +1,9 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
-import { useNavigation } from '@react-navigation/native'; // 네비게이션 훅 추가
+import { useNavigation } from '@react-navigation/native';
 
 const RequestApproval = () => {
-
-  const navigation = useNavigation(); // 네비게이션 객체 사용
+  const navigation = useNavigation();
 
   return (
     <View style={styles.container}>
@@ -18,23 +17,41 @@ const RequestApproval = () => {
               <TouchableOpacity style={styles.button}>
                 <Text style={styles.buttonText}>거절</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.button}>
+              <TouchableOpacity
+                style={styles.button}
+                onPress={() => navigation.navigate('RequestAccepted')} // 수락 버튼을 눌렀을 때 이동
+              >
                 <Text style={styles.buttonText}>수락</Text>
               </TouchableOpacity>
             </View>
             <TouchableOpacity
               style={{marginTop: 10, alignSelf: 'flex-end' }}
               onPress={() => navigation.navigate('RequestPage')}>
-              <Text style={{ color: 'gray', fontSize: 14, fontWeight: 'bold' , textDecorationLine: 'underline'}}>주문서 확인</Text>
-
-           </TouchableOpacity>
-
-
-
+              <Text style={{ color: 'gray', fontSize: 14, fontWeight: 'bold', textDecorationLine: 'underline' }}>주문서 확인</Text>
+            </TouchableOpacity>
           </View>
         ))}
-      </ScrollView>
 
+        <View style={styles.rowContainer}>
+          <Text style={styles.hashtags}>#학교  #비  #비즈니스</Text>
+          <View style={styles.buttonContainer}>
+            <TouchableOpacity style={styles.button}>
+              <Text style={styles.buttonText}>거절</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => navigation.navigate('RequestAccepted')} // 수락 버튼을 눌렀을 때 이동
+            >
+              <Text style={styles.buttonText}>수락</Text>
+            </TouchableOpacity>
+          </View>
+          <TouchableOpacity
+            style={{marginTop: 10, alignSelf: 'flex-end' }}
+            onPress={() => navigation.navigate('RequestPage')}>
+            <Text style={{ color: 'gray', fontSize: 14, fontWeight: 'bold', textDecorationLine: 'underline' }}>주문서 확인</Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
     </View>
   );
 };
@@ -57,10 +74,9 @@ const styles = StyleSheet.create({
   },
   rowContainer: {
     marginBottom: 20,
-    marginBottom: 20, // 구분선과 아래 요소 간 간격 조절
-    borderBottomWidth: 1, // 구분선 두께
-    borderBottomColor: 'gray', // 구분선 색상
-    paddingBottom: 10, // 구분선과 버튼 간의 간격 조절
+    borderBottomWidth: 1,
+    borderBottomColor: 'gray',
+    paddingBottom: 10,
   },
   hashtags: {
     fontSize: 20,
@@ -70,7 +86,6 @@ const styles = StyleSheet.create({
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
-
   },
   button: {
     backgroundColor: '#d3d3d3',
@@ -82,9 +97,8 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 20,
-    color:'black',
+    color: 'black',
   },
-
 });
 
 export default RequestApproval;

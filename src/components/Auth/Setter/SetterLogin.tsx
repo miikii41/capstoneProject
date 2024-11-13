@@ -89,7 +89,7 @@ export default function Login({ navigation }: LoginProps) {
     const response = await request.post(`/api/user/login`, form);
     processLoginResponse(
       response,
-      () => navigation.navigate('Home'),
+      () => navigation.navigate('SetterComplete'),
       setLogin
     );
   };
