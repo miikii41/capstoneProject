@@ -65,7 +65,7 @@ const SeekerSignup = () => {
           autoCompleteType="off" // Disable auto-fill
           autoComplete="off" // Newer React Native versions
           textContentType="none" // Disable auto-fill
-
+        />
 
       <TextInput
         style={[styles.input, passwordError && styles.errorInput]}
@@ -77,6 +77,7 @@ const SeekerSignup = () => {
           autoCompleteType="off" // Disable auto-fill
             autoComplete="off" // Newer React Native versions
           textContentType="none" // Disable auto-fill
+          />
       {passwordError ? <Text style={styles.errorText}>{passwordError}</Text> : null}
 
 

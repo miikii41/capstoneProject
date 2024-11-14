@@ -15,7 +15,7 @@ const RequestPage = ({ route, navigation }: StackScreenProps<HomeStackParams, 'R
   const params = route?.params || {};
   const {
 
-    
+
     selectedPlace = "학교",
     selectedSeason = "spring/fall",
     selectedWeather = "비",
@@ -24,13 +24,13 @@ const RequestPage = ({ route, navigation }: StackScreenProps<HomeStackParams, 'R
     isBodyPublic = true,
     isComplexPublic = true,
     additionalRequest = "전문성 있게",
-    photos =[],
+    clothes =[],
   } = params;
 
 
 useEffect(() => {
-  console.log('Received photos:', photos);
-}, [photos]);
+  console.log('Received clothes:', clothes);
+}, [clothes]);
 
 
   return (
@@ -38,22 +38,21 @@ useEffect(() => {
       <Text style={styles.header}>Request Confirmation</Text>
 
 
-      {/* 선택된 사진들을 화면에 렌더링 */}
-      {photos.length > 0 && (
+      {/* 선택된 옷들을 화면에 렌더링 */}
+      {clothes.length > 0 && (
         <>
-          <Text style={styles.sectionTitle}>Selected Photos</Text>
+          <Text style={styles.sectionTitle}>Selected Clothes</Text>
           <View style={styles.photosContainer}>
-            {photos.map((photo, index) => (
+            {clothes.map((itemUri, index) => (
               <Image
                 key={index}
-                source={{ uri: photo.uri }}
+                source={{ uri: itemUri }}
                 style={styles.photo}
               />
             ))}
           </View>
         </>
       )}
-
 
       {/* Place Section */}
       <Text style={styles.sectionTitle}>Place</Text>
