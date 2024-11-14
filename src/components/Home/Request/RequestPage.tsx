@@ -1,14 +1,9 @@
 import React, { useState, useEffect } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  ScrollView,
-  Alert,
-  Image,
-} from "react-native";
+import {View,Text,StyleSheet,ScrollView,Alert,Image,} from "react-native";
 import { StackScreenProps } from '@react-navigation/stack';
 import { HomeStackParams } from '../../../pages/Home'; // 네비게이션 타입 추가
+import BottomButton from '../../../common/BottomButton';
+
 
 const RequestPage = ({ route, navigation }: StackScreenProps<HomeStackParams, 'RequestPage'>) => {
   // RequestPage에서 전달된 데이터 가져오기
@@ -26,6 +21,10 @@ const RequestPage = ({ route, navigation }: StackScreenProps<HomeStackParams, 'R
     additionalRequest = "전문성 있게",
     clothes =[],
   } = params;
+
+  const handleNextPress = () => {
+    navigation.navigate('RequestSent');
+  };
 
 
 useEffect(() => {
@@ -46,7 +45,7 @@ useEffect(() => {
             {clothes.map((itemUri, index) => (
               <Image
                 key={index}
-                source={{ uri: itemUri }}
+                  source={typeof itemUri === 'number' ? itemUri : { uri: itemUri }}
                 style={styles.photo}
               />
             ))}
@@ -187,6 +186,10 @@ useEffect(() => {
       <View style={styles.additionalRequestContainer}>
         <Text style={styles.value}>{additionalRequest}</Text>
       </View>
+
+      <View style={{ paddingHorizontal: 45, paddingVertical: 50 }}>
+        <BottomButton value='sent' pressed={false} onPress={handleNextPress} />
+      </View>
     </ScrollView>
   );
 };
@@ -255,7 +258,7 @@ const styles = StyleSheet.create({
     borderColor: '#ccc',
     borderRadius: 8,
     padding: 10,
-    marginBottom: 100,
+    marginBottom: 10,
   },
   photo: {
     width: 130,

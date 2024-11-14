@@ -26,6 +26,7 @@ import WeatherPage from "./src/components/Weather/WeatherPage"; // WeatherPageë¥
 import RequestPage from './src/components/Home/Request/RequestPage';
 import RequestApproval from './src/components/Home/Request/RequestApproval';
 import RequestForm from './src/components/Home/Request/RequestForm';
+import RequestSent from './src/components/Home/Request/RequestSent';
 import RequestAccepted from './src/components/Home/Request/RequestAccepted';
 import AddCloset from './src/components/Closet/AddCloset';
 import ClosetMain from './src/components/Closet/ClosetMain';
@@ -46,6 +47,7 @@ function SeekerNavigator() {
       <Tab.Screen name="WeatherPage" component={WeatherPage} />
       <Stack.Screen name="RequestApproval" component={RequestApproval} />
       <Stack.Screen name="RequestPage" component={RequestPage} />
+      <Stack.Screen name="RequestSent" component={RequestSent} />
       <Stack.Screen name="RequestAccepted" component={RequestAccepted} />
       <Stack.Screen name="InitialLogin" component={InitialLogin} />
       <Stack.Screen name="AddCloset" component={AddCloset} />
