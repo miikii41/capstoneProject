@@ -13,7 +13,7 @@ const ChooseUserType = () => {
         style={styles.button}
 
         onPress={() => navigation.navigate('SeekerSignup')}  // Seeker 회원가입 페이지로 이동
-
+    >
         <Text style={styles.buttonText}>Seeker</Text>
       </TouchableOpacity>
 
