@@ -37,7 +37,7 @@ const SeekerMainPage = () => {
       <View style={styles.buttonContainer}>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.navigate('ClosetMain')}
+          onPress={() => navigation.navigate('AddCloset')}
         >
           <Icon name="wardrobe-outline" size={24} color="#333" />
           <Text style={styles.buttonText}>CLOSET</Text>
@@ -51,25 +51,22 @@ const SeekerMainPage = () => {
           <Text style={styles.buttonText}>캘린더</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate('AddCloset')}
-        >
-          <Text style={styles.buttonText}>Add Closet</Text>
-        </TouchableOpacity>
+
       </View>
 
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate('RequestSent')}
-        >
-          <Text style={styles.buttonText}>request sent</Text>
-        </TouchableOpacity>
-      </View>
+<View style={styles.buttonContainer}>
+  <TouchableOpacity
+    style={styles.button}
+    onPress={() => navigation.navigate('RequestSent')}
+  >
+    <Text style={styles.buttonText}>REQUEST SENT</Text>
+  </TouchableOpacity>
+</View>
     </View>
   );
 };
+
+
 
 const styles = StyleSheet.create({
   container: {
