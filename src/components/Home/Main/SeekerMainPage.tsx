@@ -56,10 +56,10 @@ const SeekerMainPage = () => {
 
 <View style={styles.buttonContainer}>
   <TouchableOpacity
-    style={styles.button}
+    style={styles.singleButton} // 새로운 스타일을 적용
     onPress={() => navigation.navigate('RequestSent')}
   >
-    <Text style={styles.buttonText}>REQUEST SENT</Text>
+    <Text style={styles.singleButtonText}>REQUEST SENT</Text>
   </TouchableOpacity>
 </View>
     </View>
@@ -125,6 +125,20 @@ const styles = StyleSheet.create({
     color: '#333',
     marginLeft: 8,
   },
-});
+    singleButton: {
+      backgroundColor: '#e0e0e0',
+      padding: 15,
+      borderRadius: 10,
+      alignItems: 'center', // 텍스트를 버튼의 중앙에 배치
+      justifyContent: 'center', // 텍스트를 버튼의 중앙에 배치
+      width: '80%', // 원하는 버튼 크기 조정
+    },
+    singleButtonText: {
+      fontSize: 16,
+      fontWeight: 'bold',
+      color: '#333',
+      textAlign: 'center', // 텍스트 중앙 정렬
+    },
+  });
 
 export default SeekerMainPage;
