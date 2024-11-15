@@ -1,53 +1,81 @@
-import React, { useState } from 'react';
-import { View, Image, StyleSheet, TouchableOpacity, Text } from 'react-native';
-import { launchImageLibrary } from 'react-native-image-picker';
+import React, { useEffect, useState } from 'react';
+import { View, Image, StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { useCloset } from '../../contexts/ClosetContext';
 
-const ClosetMain = () => {
-  const [hangers, setHangers] = useState([
-    { id: 1, occupied: false, item: null },
-    { id: 2, occupied: false, item: null },
-    { id: 3, occupied: false, item: null },
-    { id: 4, occupied: false, item: null },
-    { id: 5, occupied: false, item: null },
-    { id: 6, occupied: false, item: null },
-  ]);
+const ClosetMain = ({ navigation, route }) => {
+  const { clothes } = useCloset(); // clothes 배열 가져오기
+  const [availableClothes, setAvailableClothes] = useState<string | number[]>([
+    require('../../assets/Closet/sweater.png'),
+    ]); // 선택되지 않은 옷들  , sweater.png 임의로 기본값으로 추가
+  const [chosenClothes, setChosenClothes] = useState<string | number[]>([
+      ]); // 선택된 옷들
 
-  const handleAddItem = (hangerId) => {
-    launchImageLibrary({ mediaType: 'photo' }, (response) => {
-      if (response.assets && response.assets.length > 0) {
-        const selectedImageUri = response.assets[0].uri;
-        setHangers((prevHangers) =>
-          prevHangers.map((hanger) =>
-            hanger.id === hangerId ? { ...hanger, occupied: true, item: selectedImageUri } : hanger
-          )
-        );
-      }
-    });
+  // clothes 값이 변경될 때 availableClothes 초기화
+  useEffect(() => {
+    setAvailableClothes((prev) => [...prev, ...clothes]);
+  }, [clothes]);
+
+  const handleChooseClothes = (itemUri: string | numver) => {
+    // 선택된 옷을 availableClothes에서 제거하고 chosenClothes에 추가
+    setAvailableClothes(availableClothes.filter((item) => item !== itemUri));
+    setChosenClothes([...chosenClothes, itemUri]);
+  };
+
+  const handleRemoveFromChosen = (itemUri: string | number) => {
+    // 선택된 옷을 chosenClothes에서 제거하고 availableClothes에 다시 추가
+    setChosenClothes(chosenClothes.filter((item) => item !== itemUri));
+    setAvailableClothes([...availableClothes, itemUri]);
+  };
+
+  const handleDone = () => {
+    // 선택된 옷을 RequestForm에 전달
+    if (route.params?.onSelect) {
+      const formattedClothes = chosenClothes.map((itemUri) =>
+        typeof itemUri === 'number' ? itemUri : { uri: itemUri }
+      ); // `require`와 URI를 구분하여 전달
+      route.params.onSelect(formattedClothes); // 콜백 호출
+    }
+    navigation.navigate('RequestForm');
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>CHOOSE FROM CLOSET</Text>
-      <Text style={styles.subtitle}>DRAG 1 ITEM FOR TODAY</Text>
+      <Text style={styles.title}>YOUR CLOSET</Text>
 
+      {/* 선택되지 않은 옷들 */}
       <View style={styles.closetContainer}>
-        {hangers.map((hanger) => (
-          <TouchableOpacity key={hanger.id} onPress={() => handleAddItem(hanger.id)}>
-            <View style={styles.hangerContainer}>
+        {availableClothes.map((itemUri, index) => (
+          <TouchableOpacity key={index} onPress={() => handleChooseClothes(itemUri)}>
+            <View style={styles.clothesContainer}>
               <Image
-                source={require('../../assets/Closet/hanger.png')}
-                style={styles.hangerImage}
+                source={typeof itemUri === 'number' ? itemUri : { uri: itemUri }}
+                style={styles.clothesImage}
               />
-              {hanger.occupied && hanger.item && (
-                <Image
-                  source={{ uri: hanger.item }} // 업로드된 이미지 URI 사용
-                  style={styles.clothesImage}
-                />
-              )}
             </View>
           </TouchableOpacity>
         ))}
       </View>
+
+      <Text style={styles.subtitle}>CHOSEN CLOTHES</Text>
+
+      {/* 선택된 옷들 */}
+      <View style={styles.chosenClothesContainer}>
+        {chosenClothes.map((itemUri, index) => (
+          <TouchableOpacity key={index} onPress={() => handleRemoveFromChosen(itemUri)}>
+            <View style={styles.chosenClothesItem}>
+            <Image
+              source={typeof itemUri === 'number' ? itemUri : { uri: itemUri }}
+              style={styles.clothesImage}
+            />
+            </View>
+          </TouchableOpacity>
+        ))}
+      </View>
+
+      {/* 완료 버튼 */}
+      <TouchableOpacity onPress={handleDone} style={styles.doneButton}>
+        <Text style={styles.doneButtonText}>완료</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -55,7 +83,6 @@ const ClosetMain = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     padding: 20,
   },
@@ -64,33 +91,53 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 10,
   },
-  subtitle: {
-    fontSize: 16,
-    color: 'magenta',
-    marginBottom: 20,
-  },
   closetContainer: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center',
     width: '100%',
   },
-  hangerContainer: {
+  clothesContainer: {
     width: 130,
-    height: 70,
+    height: 130,
     margin: 10,
-    position: 'relative',
-  },
-  hangerImage: {
-    width: '100%',
-    height: '100%',
   },
   clothesImage: {
     width: '100%',
     height: '100%',
-    position: 'absolute',
-    top: '0%',
-    left: '0%',
+    resizeMode: 'contain',
+  },
+  subtitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginTop: 20,
+  },
+  chosenClothesContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    marginTop: 10,
+    width: '100%',
+  },
+  chosenClothesItem: {
+    width: 130,
+    height: 130,
+    margin: 10,
+    borderColor: 'magenta',
+    borderWidth: 2,
+    borderRadius: 8,
+  },
+  doneButton: {
+    marginTop: 20,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    backgroundColor: 'black',
+    borderRadius: 5,
+  },
+  doneButtonText: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });
 

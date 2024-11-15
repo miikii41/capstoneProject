@@ -61,11 +61,11 @@ const SeekerSignup = () => {
         placeholder="이메일 입력"
         value={id}
         onChangeText={setId}
+
           autoCompleteType="off" // Disable auto-fill
           autoComplete="off" // Newer React Native versions
           textContentType="none" // Disable auto-fill
-      />
-
+        />
 
       <TextInput
         style={[styles.input, passwordError && styles.errorInput]}
@@ -73,10 +73,11 @@ const SeekerSignup = () => {
         secureTextEntry
         value={password}
         onChangeText={(text) => validatePassword(text)}
+
           autoCompleteType="off" // Disable auto-fill
             autoComplete="off" // Newer React Native versions
           textContentType="none" // Disable auto-fill
-      />
+          />
       {passwordError ? <Text style={styles.errorText}>{passwordError}</Text> : null}
 
 

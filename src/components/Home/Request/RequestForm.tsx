@@ -11,15 +11,13 @@ import {
   Image,
 } from "react-native";
 import { useNavigation } from '@react-navigation/native';
-import PhotoOptions, { PhotoResultProps } from '../../../common/PhotoOptions';
 import BottomButton from '../../../common/BottomButton';
 
 const RequestForm = () => {
-  const navigation = useNavigation(); // 네비게이션 객체 사용
+  const navigation = useNavigation(); // Navigation object
 
-  // 상태 관리
-  const [photos, setPhotos] = useState<PhotoResultProps[]>([]);
-  const [refPhotos, setRefPhotos] = useState<PhotoResultProps[]>([]);
+  // State management
+  const [clothes, setClothes] = useState<string | number[]>([]); // Selected clothes URIs
   const [selectedPlace, setSelectedPlace] = useState<string | null>(null);
   const [selectedSeason, setSelectedSeason] = useState<string | null>(null);
   const [selectedWeather, setSelectedWeather] = useState<string | null>(null);
@@ -31,71 +29,76 @@ const RequestForm = () => {
 
   // 디버깅을 위해 photos 상태가 업데이트될 때마다 출력
   useEffect(() => {
-    console.log('Updated photos:', photos);
-  }, [photos]);
+    console.log('Updated clothes:', clothes);
+  }, [clothes]);
 
-  // 다음 페이지로 데이터를 전달하는 함수
-const handleNextPress = () => {
-  if (!selectedPlace || !selectedSeason || !selectedWeather || !selectedStyle || !selectedWith) {
-    Alert.alert("모든 항목을 선택해주세요.");
-    return;
-  }
+  // Navigate to ClosetMain to select clothes
+  const handleClothesSelection = () => {
+    navigation.navigate('ClosetMain', {
+      onSelect: (selectedClothes: string | number[]) => setClothes(selectedClothes),
+    });
+  };
 
+  // Handle removing a selected piece of clothing
+  const handleRemoveClothes = (itemUri: string | number) => {
+    setClothes(clothes.filter((item) => item !== itemUri));
+  };
+
+
+  // Proceed to the next page
+  const handleNextPress = () => {
+    if (!selectedPlace || !selectedSeason || !selectedWeather || !selectedStyle || !selectedWith) {
+      Alert.alert("모든 항목을 선택해주세요.");
+      return;
+    }
 
     navigation.navigate('RequestPage', {
-       selectedPlace,
-       selectedSeason,
-       selectedWeather,
-       selectedStyle,
-       selectedWith,
-       isBodyPublic,
-       isComplexPublic,
-       additionalRequest,
-       photos,
-     });
-   };
+      selectedPlace,
+      selectedSeason,
+      selectedWeather,
+      selectedStyle,
+      selectedWith,
+      isBodyPublic,
+      isComplexPublic,
+      additionalRequest,
+      clothes,
+    });
+  };
 
   return (
     <ScrollView>
       <View style={styles.container}>
         <Text style={styles.header}>Request</Text>
 
+        {/* Clothes Section */}
         <Text style={styles.sectionTitle}>Clothes</Text>
+        <TouchableOpacity onPress={handleClothesSelection} >
+              <Image
+                source={require('../../../assets/Closet/hanger.png')}
+                style={styles.hangerImage}
+              />
+        </TouchableOpacity>
 
-        <View style={{ marginTop: 10, marginLeft: 120, marginRight: 120 }}>
-          <PhotoOptions
-            style={Object.assign({}, styles.grayButton, { marginRight: 5, marginBottom: 5 })}
-            max={4}
-            setPhoto={(newPhotos) => {
-              // 새로운 사진 배열을 { uri: ... } 형태로 변환
-              const formattedPhotos = newPhotos.map(photo => {
-                // photo가 단순 문자열일 경우 객체로 변환
-                if (typeof photo === 'string') {
-                  return { uri: photo };
-                }
-                // 이미 객체인 경우 그대로 사용
-                return photo;
-              });
-
-              // 기존 사진 배열에 새 사진을 추가
-              setPhotos(prevPhotos => [...prevPhotos, ...formattedPhotos]);
-            }}
-            buttonLabel='Select Photos'
-          />
-        </View>
-
-
+        {/* Render Selected Clothes */}
         <View style={styles.photosContainer}>
-          {photos.map((photo, index) => (
-            <Image
-              key={index}
-              source={{ uri: photo.uri }}
-              style={styles.photo}
-            />
+          {clothes.map((itemUri, index) => (
+            <View key={index} style={styles.photoContainer}>
+                <Image
+                  source={typeof itemUri === 'number' ? itemUri : { uri: itemUri }}
+                  style={styles.photo}
+                />
+
+              <TouchableOpacity
+                style={styles.removeButton}
+                onPress={() => handleRemoveClothes(itemUri)}
+              >
+                <Text style={styles.removeButtonText}> - </Text>
+              </TouchableOpacity>
+            </View>
           ))}
         </View>
 
-
+        {/* Place Section */}
         <Text style={styles.sectionTitle}>Place</Text>
         <View style={styles.buttonGroup}>
           {["공원", "레스토랑", "카페", "여행", "학교", "기타"].map((place) => (
@@ -119,7 +122,7 @@ const handleNextPress = () => {
           ))}
         </View>
 
-
+        {/* Season Section */}
         <Text style={styles.sectionTitle}>Season</Text>
         <View style={styles.buttonGroup}>
           {["spring/fall", "summer", "winter"].map((season) => (
@@ -143,7 +146,7 @@ const handleNextPress = () => {
           ))}
         </View>
 
-
+        {/* Weather Section */}
         <Text style={styles.sectionTitle}>Weather</Text>
         <View style={styles.buttonGroup}>
           {["비", "바람", "눈", "습함"].map((weather) => (
@@ -167,6 +170,7 @@ const handleNextPress = () => {
           ))}
         </View>
 
+        {/* Style Section */}
         <Text style={styles.sectionTitle}>Style</Text>
         <View style={styles.buttonGroup}>
           {["캐주얼", "비즈니스", "포멀", "스포티", "스트리트", "미니멀", "빈티지", "페미닌", "힙", "기타"].map((style) => (
@@ -190,7 +194,7 @@ const handleNextPress = () => {
           ))}
         </View>
 
-
+        {/* With Section */}
         <Text style={styles.sectionTitle}>With</Text>
         <View style={styles.buttonGroup}>
           {["친구", "연인", "가족", "비즈니스", "기타"].map((withWho) => (
@@ -214,6 +218,7 @@ const handleNextPress = () => {
           ))}
         </View>
 
+        {/* Toggle Switches */}
         <View style={styles.switchContainer}>
           <View style={styles.switchRow}>
             <Text style={styles.switchLabel}>체형 공개</Text>
@@ -232,6 +237,7 @@ const handleNextPress = () => {
           </View>
         </View>
 
+        {/* Additional Request Section */}
         <Text style={styles.sectionTitle}>추가 요청사항</Text>
         <TextInput
           style={styles.inputBox}
@@ -249,8 +255,6 @@ const handleNextPress = () => {
     </ScrollView>
   );
 };
-
-
 
 const styles = StyleSheet.create({
   container: {
@@ -320,6 +324,26 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     paddingVertical: 6,
   },
+  grayButtonText: {
+    color: 'black',
+    fontSize: 16,
+  },
+    hangerImage: {
+      width: 51,
+      height: 27,
+    },
+  removeButton: {
+    position: 'absolute',
+    right: 5,
+    backgroundColor: 'deeppink',
+    borderRadius: 100,
+  },
+    removeButtonText: {
+      color: 'black',
+      fontSize: 25,
+      fontWeight:'bold',
+    },
+
 });
 
 export default RequestForm;

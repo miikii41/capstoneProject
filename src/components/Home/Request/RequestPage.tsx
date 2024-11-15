@@ -1,14 +1,9 @@
 import React, { useState, useEffect } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  ScrollView,
-  Alert,
-  Image,
-} from "react-native";
+import {View,Text,StyleSheet,ScrollView,Alert,Image,} from "react-native";
 import { StackScreenProps } from '@react-navigation/stack';
 import { HomeStackParams } from '../../../pages/Home'; // 네비게이션 타입 추가
+import BottomButton from '../../../common/BottomButton';
+
 
 const RequestPage = ({ route, navigation }: StackScreenProps<HomeStackParams, 'RequestPage'>) => {
   // RequestPage에서 전달된 데이터 가져오기
@@ -24,10 +19,14 @@ const RequestPage = ({ route, navigation }: StackScreenProps<HomeStackParams, 'R
     additionalRequest,
   } = route.params || {}; // route.params를 통해 데이터 받아오기
 
+  const handleNextPress = () => {
+    navigation.navigate('RequestSent');
+  };
+
 
 useEffect(() => {
-  console.log('Received photos:', photos);
-}, [photos]);
+  console.log('Received clothes:', clothes);
+}, [clothes]);
 
 
   return (
@@ -35,20 +34,23 @@ useEffect(() => {
       <Text style={styles.header}>Request Confirmation</Text>
 
 
-      {photos.length > 0 && (
+
+
+      {clothes.length > 0 && (
         <>
-          <Text style={styles.sectionTitle}>Selected Photos</Text>
+          <Text style={styles.sectionTitle}>Selected Clothes</Text>
           <View style={styles.photosContainer}>
-            {photos.map((photo, index) => (
+            {clothes.map((itemUri, index) => (
               <Image
                 key={index}
-                source={{ uri: photo.uri }}
+                  source={typeof itemUri === 'number' ? itemUri : { uri: itemUri }}
                 style={styles.photo}
               />
             ))}
           </View>
         </>
       )}
+
 
 
       <Text style={styles.sectionTitle}>Place</Text>
@@ -183,6 +185,10 @@ useEffect(() => {
       <View style={styles.additionalRequestContainer}>
         <Text style={styles.value}>{additionalRequest}</Text>
       </View>
+
+      <View style={{ paddingHorizontal: 45, paddingVertical: 50 }}>
+        <BottomButton value='sent' pressed={false} onPress={handleNextPress} />
+      </View>
     </ScrollView>
   );
 };
@@ -251,11 +257,12 @@ const styles = StyleSheet.create({
     borderColor: '#ccc',
     borderRadius: 8,
     padding: 10,
-    marginBottom: 100,
+    marginBottom: 10,
   },
   photo: {
-    width: 100, // 충분히 큰 값으로 설정
-    height: 100,
+    width: 130,
+    height: 130,
+    alignItems: 'center',
     borderRadius: 10,
     margin: 5,
     backgroundColor: 'red',

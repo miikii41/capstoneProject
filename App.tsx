@@ -26,8 +26,11 @@ import WeatherPage from "./src/components/Weather/WeatherPage"; // WeatherPageë¥
 import RequestApproval from './src/components/Home/Request/RequestApproval';
 import RequestPage from './src/components/Home/Request/RequestPage';
 import RequestForm from './src/components/Home/Request/RequestForm';
+import RequestSent from './src/components/Home/Request/RequestSent';
 import RequestAccepted from './src/components/Home/Request/RequestAccepted';
+import AddCloset from './src/components/Closet/AddCloset';
 import ClosetMain from './src/components/Closet/ClosetMain';
+import { ClosetProvider } from './src/contexts/ClosetContext';
 import Calender from './src/components/Calender/Calender';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 
@@ -43,12 +46,16 @@ function SeekerNavigator() {
       <Stack.Screen name="RequestForm" component={RequestForm} />
       <Stack.Screen name="WeatherPage" component={WeatherPage} />
       <Stack.Screen name="RequestApproval" component={RequestApproval} />
-       <Stack.Screen name="RequestPage" component={RequestPage} />
+      <Stack.Screen name="RequestPage" component={RequestPage} />
+      <Stack.Screen name="RequestSent" component={RequestSent} />
       <Stack.Screen name="RequestAccepted" component={RequestAccepted} />
       <Stack.Screen name="InitialLogin" component={InitialLogin} />
+      <Stack.Screen name="AddCloset" component={AddCloset} />
       <Stack.Screen name="ClosetMain" component={ClosetMain} />
-            <Stack.Screen name="Calender" component={Calender} />
-    </Stack.Navigator>
+          <Stack.Screen name="Calender" component={Calender} />
+
+ </Stack.Navigator>
+
   );
 }
 
@@ -102,19 +109,24 @@ function App() {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
+
   return (
-    <NavigationContainer>
-      <WeatherProvider>
-        <SafeAreaView style={[styles.container, backgroundStyle]}>
-          <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-          {
-            userType === 'guest' ? <GuestNavigator setUserType={setUserType} /> :
-            userType === 'seeker' ? <SeekerNavigator /> :
-            <SetterNavigator />
-          }
-        </SafeAreaView>
-      </WeatherProvider>
-    </NavigationContainer>
+    <ClosetProvider>
+      <NavigationContainer>
+        <WeatherProvider>
+          <SafeAreaView style={[styles.container, backgroundStyle]}>
+            <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+            {userType === 'guest' ? (
+              <GuestNavigator setUserType={setUserType} />
+            ) : userType === 'seeker' ? (
+              <SeekerNavigator />
+            ) : (
+              <SetterNavigator />
+            )}
+          </SafeAreaView>
+        </WeatherProvider>
+      </NavigationContainer>
+    </ClosetProvider>
   );
 }
 
