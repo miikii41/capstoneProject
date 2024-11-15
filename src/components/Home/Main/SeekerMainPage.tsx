@@ -44,7 +44,10 @@ const SeekerMainPage = () => {
           <Text style={styles.buttonText}>CLOSET</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate('Calender')} // 캘린더로 이동
+        >
           <Icon name="calendar-outline" size={24} color="#333" />
           <Text style={styles.buttonText}>캘린더</Text>
         </TouchableOpacity>

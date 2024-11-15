@@ -35,24 +35,25 @@ const RequestForm = () => {
   }, [photos]);
 
   // 다음 페이지로 데이터를 전달하는 함수
-  const handleNextPress = () => {
-    if (!selectedPlace || !selectedSeason || !selectedWeather || !selectedStyle || !selectedWith) {
-      Alert.alert("모든 항목을 선택해주세요.");
-      return;
-    }
+const handleNextPress = () => {
+  if (!selectedPlace || !selectedSeason || !selectedWeather || !selectedStyle || !selectedWith) {
+    Alert.alert("모든 항목을 선택해주세요.");
+    return;
+  }
+
 
     navigation.navigate('RequestPage', {
-      selectedPlace,
-      selectedSeason,
-      selectedWeather,
-      selectedStyle,
-      selectedWith,
-      isBodyPublic,
-      isComplexPublic,
-      additionalRequest,
-      photos,
-    });
-  };
+       selectedPlace,
+       selectedSeason,
+       selectedWeather,
+       selectedStyle,
+       selectedWith,
+       isBodyPublic,
+       isComplexPublic,
+       additionalRequest,
+       photos,
+     });
+   };
 
   return (
     <ScrollView>
@@ -83,7 +84,7 @@ const RequestForm = () => {
           />
         </View>
 
-        {/* 선택한 사진들을 화면에 렌더링 */}
+
         <View style={styles.photosContainer}>
           {photos.map((photo, index) => (
             <Image
@@ -94,7 +95,7 @@ const RequestForm = () => {
           ))}
         </View>
 
-        {/* Place Section */}
+
         <Text style={styles.sectionTitle}>Place</Text>
         <View style={styles.buttonGroup}>
           {["공원", "레스토랑", "카페", "여행", "학교", "기타"].map((place) => (
@@ -118,7 +119,7 @@ const RequestForm = () => {
           ))}
         </View>
 
-        {/* Season Section */}
+
         <Text style={styles.sectionTitle}>Season</Text>
         <View style={styles.buttonGroup}>
           {["spring/fall", "summer", "winter"].map((season) => (
@@ -142,7 +143,7 @@ const RequestForm = () => {
           ))}
         </View>
 
-        {/* Weather Section */}
+
         <Text style={styles.sectionTitle}>Weather</Text>
         <View style={styles.buttonGroup}>
           {["비", "바람", "눈", "습함"].map((weather) => (
@@ -166,7 +167,6 @@ const RequestForm = () => {
           ))}
         </View>
 
-        {/* Style Section */}
         <Text style={styles.sectionTitle}>Style</Text>
         <View style={styles.buttonGroup}>
           {["캐주얼", "비즈니스", "포멀", "스포티", "스트리트", "미니멀", "빈티지", "페미닌", "힙", "기타"].map((style) => (
@@ -190,7 +190,7 @@ const RequestForm = () => {
           ))}
         </View>
 
-        {/* With Section */}
+
         <Text style={styles.sectionTitle}>With</Text>
         <View style={styles.buttonGroup}>
           {["친구", "연인", "가족", "비즈니스", "기타"].map((withWho) => (
@@ -214,7 +214,6 @@ const RequestForm = () => {
           ))}
         </View>
 
-        {/* Toggle Switches */}
         <View style={styles.switchContainer}>
           <View style={styles.switchRow}>
             <Text style={styles.switchLabel}>체형 공개</Text>
@@ -233,7 +232,6 @@ const RequestForm = () => {
           </View>
         </View>
 
-        {/* Additional Request Section */}
         <Text style={styles.sectionTitle}>추가 요청사항</Text>
         <TextInput
           style={styles.inputBox}

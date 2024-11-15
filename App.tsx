@@ -23,12 +23,12 @@ import BodyType from './src/components/Auth/BodyType';
 import Congratulations from './src/components/Auth/Congratulations';
 import WeatherProvider from './src/contexts/WeatherProvider'; // 새로 추가한 WeatherProvider
 import WeatherPage from "./src/components/Weather/WeatherPage"; // WeatherPage를 추가
-import RequestPage from './src/components/Home/Request/RequestPage';
 import RequestApproval from './src/components/Home/Request/RequestApproval';
+import RequestPage from './src/components/Home/Request/RequestPage';
 import RequestForm from './src/components/Home/Request/RequestForm';
 import RequestAccepted from './src/components/Home/Request/RequestAccepted';
 import ClosetMain from './src/components/Closet/ClosetMain';
-
+import Calender from './src/components/Calender/Calender';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 // 네비게이터 생성
@@ -43,10 +43,11 @@ function SeekerNavigator() {
       <Stack.Screen name="RequestForm" component={RequestForm} />
       <Stack.Screen name="WeatherPage" component={WeatherPage} />
       <Stack.Screen name="RequestApproval" component={RequestApproval} />
-      <Stack.Screen name="RequestPage" component={RequestPage} />
+       <Stack.Screen name="RequestPage" component={RequestPage} />
       <Stack.Screen name="RequestAccepted" component={RequestAccepted} />
       <Stack.Screen name="InitialLogin" component={InitialLogin} />
       <Stack.Screen name="ClosetMain" component={ClosetMain} />
+            <Stack.Screen name="Calender" component={Calender} />
     </Stack.Navigator>
   );
 }
@@ -60,7 +61,6 @@ function SetterNavigator() {
       <Stack.Screen name="Review" component={Review} />
       <Stack.Screen name="MyPageTabView" component={MyPageTabView} />
       <Stack.Screen name="RequestApproval" component={RequestApproval} />
-      <Stack.Screen name="RequestPage" component={RequestPage} />
       <Stack.Screen name="RequestAccepted" component={RequestAccepted} />
     </Stack.Navigator>
   );

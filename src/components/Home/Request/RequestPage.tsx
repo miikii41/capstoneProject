@@ -12,19 +12,17 @@ import { HomeStackParams } from '../../../pages/Home'; // 네비게이션 타입
 
 const RequestPage = ({ route, navigation }: StackScreenProps<HomeStackParams, 'RequestPage'>) => {
   // RequestPage에서 전달된 데이터 가져오기
-  const params = route?.params || {};
   const {
-
-    
-    selectedPlace = "학교",
-    selectedSeason = "spring/fall",
-    selectedWeather = "비",
-    selectedStyle = "비즈니스",
-    selectedWith = "비즈니스",
-    isBodyPublic = true,
-    isComplexPublic = true,
-    additionalRequest = "전문성 있게",
-  } = params;
+    photos = [],
+    selectedPlace,
+    selectedSeason,
+    selectedWeather,
+    selectedStyle,
+    selectedWith,
+    isBodyPublic,
+    isComplexPublic,
+    additionalRequest,
+  } = route.params || {}; // route.params를 통해 데이터 받아오기
 
 
 useEffect(() => {
@@ -37,7 +35,6 @@ useEffect(() => {
       <Text style={styles.header}>Request Confirmation</Text>
 
 
-      {/* 선택된 사진들을 화면에 렌더링 */}
       {photos.length > 0 && (
         <>
           <Text style={styles.sectionTitle}>Selected Photos</Text>
@@ -54,7 +51,6 @@ useEffect(() => {
       )}
 
 
-      {/* Place Section */}
       <Text style={styles.sectionTitle}>Place</Text>
       <View style={styles.buttonGroup}>
         {["공원", "레스토랑", "카페", "여행", "학교", "기타"].map((place) => (
@@ -77,7 +73,7 @@ useEffect(() => {
         ))}
       </View>
 
-      {/* Season Section */}
+
       <Text style={styles.sectionTitle}>Season</Text>
       <View style={styles.buttonGroup}>
         {["spring/fall", "summer", "winter"].map((season) => (
@@ -100,7 +96,7 @@ useEffect(() => {
         ))}
       </View>
 
-      {/* Weather Section */}
+
       <Text style={styles.sectionTitle}>Weather</Text>
       <View style={styles.buttonGroup}>
         {["비", "바람", "눈", "습함"].map((weather) => (
@@ -123,7 +119,7 @@ useEffect(() => {
         ))}
       </View>
 
-      {/* Style Section */}
+
       <Text style={styles.sectionTitle}>Style</Text>
       <View style={styles.buttonGroup}>
         {["캐주얼", "비즈니스", "포멀", "스포티", "스트리트", "미니멀", "빈티지", "페미닌", "힙", "기타"].map((style) => (
@@ -146,7 +142,7 @@ useEffect(() => {
         ))}
       </View>
 
-      {/* With Section */}
+
       <Text style={styles.sectionTitle}>With</Text>
       <View style={styles.buttonGroup}>
         {["친구", "연인", "가족", "비즈니스", "기타"].map((withWho) => (
@@ -169,7 +165,7 @@ useEffect(() => {
         ))}
       </View>
 
-      {/* Toggle Switches */}
+
       <View style={styles.switchContainer}>
         <View style={styles.switchRow}>
           <Text style={styles.switchLabel}>체형 공개</Text>
@@ -182,7 +178,7 @@ useEffect(() => {
         </View>
       </View>
 
-      {/* Additional Request Section */}
+
       <Text style={styles.sectionTitle}>추가 요청사항</Text>
       <View style={styles.additionalRequestContainer}>
         <Text style={styles.value}>{additionalRequest}</Text>
