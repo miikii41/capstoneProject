@@ -37,7 +37,7 @@ const SeekerMainPage = () => {
       <View style={styles.buttonContainer}>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.navigate('ClosetMain')}
+          onPress={() => navigation.navigate('AddCloset')}
         >
           <Icon name="wardrobe-outline" size={24} color="#333" />
           <Text style={styles.buttonText}>CLOSET</Text>
@@ -51,25 +51,22 @@ const SeekerMainPage = () => {
           <Text style={styles.buttonText}>캘린더</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate('AddCloset')}
-        >
-          <Text style={styles.buttonText}>Add Closet</Text>
-        </TouchableOpacity>
+
       </View>
 
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity
-          style={styles.button}
-          onPress={() => navigation.navigate('RequestSent')}
-        >
-          <Text style={styles.buttonText}>request sent</Text>
-        </TouchableOpacity>
-      </View>
+<View style={styles.buttonContainer}>
+  <TouchableOpacity
+    style={styles.singleButton} // 새로운 스타일을 적용
+    onPress={() => navigation.navigate('RequestSent')}
+  >
+    <Text style={styles.singleButtonText}>REQUEST SENT</Text>
+  </TouchableOpacity>
+</View>
     </View>
   );
 };
+
+
 
 const styles = StyleSheet.create({
   container: {
@@ -128,6 +125,20 @@ const styles = StyleSheet.create({
     color: '#333',
     marginLeft: 8,
   },
-});
+    singleButton: {
+      backgroundColor: '#e0e0e0',
+      padding: 15,
+      borderRadius: 10,
+      alignItems: 'center', // 텍스트를 버튼의 중앙에 배치
+      justifyContent: 'center', // 텍스트를 버튼의 중앙에 배치
+      width: '80%', // 원하는 버튼 크기 조정
+    },
+    singleButtonText: {
+      fontSize: 16,
+      fontWeight: 'bold',
+      color: '#333',
+      textAlign: 'center', // 텍스트 중앙 정렬
+    },
+  });
 
 export default SeekerMainPage;

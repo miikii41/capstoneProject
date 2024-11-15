@@ -8,6 +8,7 @@ import BottomButton from '../../../common/BottomButton';
 const RequestPage = ({ route, navigation }: StackScreenProps<HomeStackParams, 'RequestPage'>) => {
   // RequestPage에서 전달된 데이터 가져오기
   const {
+  clothes = [],
     photos = [],
     selectedPlace,
     selectedSeason,
