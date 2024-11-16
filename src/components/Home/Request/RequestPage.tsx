@@ -34,9 +34,6 @@ useEffect(() => {
     <ScrollView style={styles.container}>
       <Text style={styles.header}>Request Confirmation</Text>
 
-
-
-
       {clothes.length > 0 && (
         <>
           <Text style={styles.sectionTitle}>Selected Clothes</Text>
@@ -188,7 +185,7 @@ useEffect(() => {
       </View>
 
       <View style={{ paddingHorizontal: 45, paddingVertical: 50 }}>
-        <BottomButton value='sent' pressed={false} onPress={handleNextPress} />
+        <BottomButton value='SEND' pressed={false} onPress={handleNextPress} />
       </View>
     </ScrollView>
   );

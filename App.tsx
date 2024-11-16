@@ -31,7 +31,7 @@ import RequestAccepted from './src/components/Home/Request/RequestAccepted';
 import AddCloset from './src/components/Closet/AddCloset';
 import ClosetMain from './src/components/Closet/ClosetMain';
 import { ClosetProvider } from './src/contexts/ClosetContext';
-import Calender from './src/components/Calender/Calender';
+import CalendarWithCloset from './src/components/Calendar/CalendarWithCloset';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 // 네비게이터 생성
@@ -52,8 +52,7 @@ function SeekerNavigator() {
       <Stack.Screen name="InitialLogin" component={InitialLogin} />
       <Stack.Screen name="AddCloset" component={AddCloset} />
       <Stack.Screen name="ClosetMain" component={ClosetMain} />
-          <Stack.Screen name="Calender" component={Calender} />
-
+      <Stack.Screen name="CalendarWithCloset" component={CalendarWithCloset} />
  </Stack.Navigator>
 
   );
