@@ -37,7 +37,7 @@ const SetterSignup = () => {
     <View style={styles.container}>
       <Text style={styles.header}>Setter</Text>
 
-      {/* 아이디 입력 및 중복 확인 */}
+
       <View style={styles.row}>
         <TextInput
           style={styles.input}
@@ -50,7 +50,7 @@ const SetterSignup = () => {
         </TouchableOpacity>
       </View>
 
-      {/* 비밀번호 입력 및 검증 */}
+
       <TextInput
         style={[styles.input, passwordError && styles.errorInput]}
         placeholder="비밀번호 (영문, 숫자 혼합 8자 이상)"
@@ -63,7 +63,7 @@ const SetterSignup = () => {
       />
       {passwordError ? <Text style={styles.errorText}>{passwordError}</Text> : null}
 
-      {/* 성별 선택 */}
+
       <Picker
         selectedValue={gender}
         onValueChange={(itemValue) => setGender(itemValue)}
@@ -74,7 +74,7 @@ const SetterSignup = () => {
         <Picker.Item label="선택안함" value="선택안함" />
       </Picker>
 
-      {/* 닉네임 입력 및 중복 확인 */}
+
       <View style={styles.row}>
         <TextInput
           style={styles.input}
@@ -87,7 +87,7 @@ const SetterSignup = () => {
         </TouchableOpacity>
       </View>
 
-      {/* 키와 몸무게 입력 */}
+
       <TextInput
         style={styles.input}
         placeholder="키 (cm)"
@@ -103,7 +103,7 @@ const SetterSignup = () => {
         onChangeText={setWeight}
       />
 
-      {/* 경력 입력 */}
+
       <TextInput
         style={styles.input}
         placeholder="경력 (연수)"
@@ -112,7 +112,7 @@ const SetterSignup = () => {
         onChangeText={setExperience}
       />
 
-      {/* 추가 입력 칸 */}
+
       <TextInput
         style={styles.input}
         placeholder="기타 입력 (선택 사항)"
@@ -120,7 +120,6 @@ const SetterSignup = () => {
         onChangeText={setAdditionalInput}
       />
 
-      {/* 다음 버튼 */}
       <TouchableOpacity style={styles.nextButton}>
         <Text style={styles.nextButtonText}>다음</Text>
       </TouchableOpacity>
