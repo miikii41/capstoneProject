@@ -31,6 +31,8 @@ import RequestAccepted from './src/components/Home/Request/RequestAccepted';
 import AddCloset from './src/components/Closet/AddCloset';
 import ClosetMain from './src/components/Closet/ClosetMain';
 import { ClosetProvider } from './src/contexts/ClosetContext';
+import ChatDetail from './src/components/Chat/ChatDetail';
+import ChatList from './src/components/Chat/ChatList';
 import CalendarWithCloset from './src/components/Calendar/CalendarWithCloset';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 
@@ -68,6 +70,8 @@ function SetterNavigator() {
       <Stack.Screen name="MyPageTabView" component={MyPageTabView} />
       <Stack.Screen name="RequestApproval" component={RequestApproval} />
       <Stack.Screen name="RequestAccepted" component={RequestAccepted} />
+      <Stack.Screen name="ChatDetail" component={ChatDetail} />
+            <Stack.Screen name="ChatList" component={ChatList} />
     </Stack.Navigator>
   );
 }
