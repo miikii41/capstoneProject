@@ -39,7 +39,7 @@ const ButtonContainer = styled.TouchableOpacity<{
   border-radius: 8px;
   padding: 10px 90px;
   background-color: ${(props: { pressed: boolean }) =>
-    props.pressed ? 'white' : 'grey'};
+    props.pressed ? 'white' : 'deeppink'};
   ${(props: { disabled: boolean }) => props.disabled && 'opacity: 0.1;'};
 `;
 

@@ -28,6 +28,7 @@ import RequestPage from './src/components/Home/Request/RequestPage';
 import RequestForm from './src/components/Home/Request/RequestForm';
 import RequestSent from './src/components/Home/Request/RequestSent';
 import RequestAccepted from './src/components/Home/Request/RequestAccepted';
+import MatchingPage from './src/components/Home/Matching/MatchingPage';
 import AddCloset from './src/components/Closet/AddCloset';
 import ClosetMain from './src/components/Closet/ClosetMain';
 import { ClosetProvider } from './src/contexts/ClosetContext';
@@ -51,6 +52,7 @@ function SeekerNavigator() {
       <Stack.Screen name="RequestPage" component={RequestPage} />
       <Stack.Screen name="RequestSent" component={RequestSent} />
       <Stack.Screen name="RequestAccepted" component={RequestAccepted} />
+      <Stack.Screen name="MatchingPage" component={MatchingPage} />
       <Stack.Screen name="InitialLogin" component={InitialLogin} />
       <Stack.Screen name="AddCloset" component={AddCloset} />
       <Stack.Screen name="ClosetMain" component={ClosetMain} />
@@ -70,8 +72,12 @@ function SetterNavigator() {
       <Stack.Screen name="MyPageTabView" component={MyPageTabView} />
       <Stack.Screen name="RequestApproval" component={RequestApproval} />
       <Stack.Screen name="RequestAccepted" component={RequestAccepted} />
+
       <Stack.Screen name="ChatDetail" component={ChatDetail} />
             <Stack.Screen name="ChatList" component={ChatList} />
+
+      <Stack.Screen name="MatchingPage" component={MatchingPage} />
+
     </Stack.Navigator>
   );
 }

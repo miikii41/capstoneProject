@@ -11,10 +11,15 @@ const SetterMainPage = () => {
       <Text style={styles.header}>Main Page</Text>
       <Text style={styles.subHeader}>Matching</Text>
 
+      <TouchableOpacity
+          onPress={() => navigation.navigate('MatchingPage')}
+        >
       <View style={styles.chartContainer}>
         <Text>현재 요청서의 수락 현황은.....</Text>
         <View style={styles.chart}></View>
       </View>
+     </TouchableOpacity>
+
 
       <View style={styles.buttonContainer}>
         <TouchableOpacity
