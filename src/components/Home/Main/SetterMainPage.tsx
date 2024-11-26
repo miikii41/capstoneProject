@@ -30,7 +30,9 @@ const SetterMainPage = () => {
           <Text style={styles.buttonText}>요청서 수락하기</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button}
+            onPress={() => navigation.navigate('ChatDetail', { chatId: 'fashionlover' })} // chatId 전달
+          >
           <View style={styles.iconWrapper}>
             <Icon name="plus" size={16} color="#333" />
           </View>
