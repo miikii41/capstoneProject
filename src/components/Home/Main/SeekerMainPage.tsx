@@ -36,7 +36,7 @@ const SeekerMainPage = () => {
           onPress={() => navigation.navigate('RequestForm')}
         >
           <Icon name="plus-circle-outline" size={24} color="#333" />
-          <Text style={styles.buttonText}>요청서 작성하기</Text>
+          <Text style={styles.buttonText}>요청서 작성</Text>
         </TouchableOpacity>
       </View>
 

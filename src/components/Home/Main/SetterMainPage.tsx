@@ -6,6 +6,11 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 const SetterMainPage = () => {
   const navigation = useNavigation();
 
+  const handleGoBack = () => {
+    // Reset the navigation stack and navigate to InitialLogin
+    navigation.navigate('InitialLogin');
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Main Page</Text>
@@ -47,6 +52,9 @@ const SetterMainPage = () => {
         >
           <Text style={styles.buttonText}>마이페이지</Text>
         </TouchableOpacity>
+
+
+
       </View>
     </View>
   );

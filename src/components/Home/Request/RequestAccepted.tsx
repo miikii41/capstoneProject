@@ -11,9 +11,9 @@ const RequestAccepted = () => {
 
       <TouchableOpacity
         style={styles.button}
-        onPress={() => navigation.navigate('RequestApproval')}
+            onPress={() => navigation.navigate('ChatDetail', { chatId: 'fashionlover' })} // chatId 전달
       >
-        <Text style={styles.buttonText}>돌아가기</Text>
+        <Text style={styles.buttonText}>제안서 작성하기</Text>
       </TouchableOpacity>
     </View>
   );

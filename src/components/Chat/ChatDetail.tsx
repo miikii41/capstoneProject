@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, StyleSheet, TouchableOpacity, FlatList, Image } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 const ChatDetail = ({ route }) => {
   const chatId = route?.params?.chatId || 'defaultChatId';
+  const navigation = useNavigation();
 
   const [messages, setMessages] = useState([
     { id: '1', text: '간단한 제안서의 내용', user: 'me', expanded: true },
@@ -72,6 +74,16 @@ const ChatDetail = ({ route }) => {
 
       {/* 입력창 */}
       <View style={styles.inputContainer}>
+
+        <TouchableOpacity
+        onPress={() => navigation.navigate('ClosetMain')} >
+
+          <Image
+            source={require('../../assets/Closet/hanger.png')}
+            style={styles.hangerImage}
+          />
+
+         </TouchableOpacity>
         <TextInput
           style={styles.input}
           value={input}
@@ -79,6 +91,8 @@ const ChatDetail = ({ route }) => {
           placeholder="Type your message"
           placeholderTextColor="#aaa"
         />
+
+
         <TouchableOpacity style={styles.sendButton} onPress={sendMessage}>
           <Text style={styles.sendButtonText}>전송</Text>
         </TouchableOpacity>
@@ -180,6 +194,11 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontSize: 16,
     fontWeight: 'bold',
+  },
+  hangerImage: {
+    width: 51,
+    height: 27,
+    marginRight:10,
   },
 });
 
