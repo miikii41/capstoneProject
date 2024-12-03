@@ -4,7 +4,7 @@ import { Calendar } from 'react-native-calendars';
 import { launchImageLibrary } from 'react-native-image-picker';
 
 const CalendarWithCloset = () => {
-  const [selectedMonth, setSelectedMonth] = useState('2024-11'); // 기본 달
+  const [selectedMonth, setSelectedMonth] = useState('2024-12'); // 기본 달
   const [dateClothes, setDateClothes] = useState({}); // 날짜별 옷 데이터를 저장하는 상태
   const [selectedDate, setSelectedDate] = useState(null); // 선택된 날짜
   const [modalVisible, setModalVisible] = useState(false); // 모달 표시 여부
@@ -95,13 +95,13 @@ const CalendarWithCloset = () => {
                   ))}
                 </View>
                 <TouchableOpacity
-                  style={[styles.modalButton, { backgroundColor: '#32CD32' }]}
+                  style={[styles.modalButton, styles.addButton]}
                   onPress={() => addClothesToDate(selectedDate)}
                 >
-                  <Text style={styles.modalButtonText}>Add More Clothes</Text>
+                  <Text style={styles.modalButtonText}>Add Clothes</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                  style={[styles.modalButton, { backgroundColor: '#FF6347' }]}
+                  style={[styles.modalButton, styles.removeButton]}
                   onPress={() => {
                     removeClothesFromDate(selectedDate);
                     setModalVisible(false); // 모달 닫기
@@ -114,7 +114,7 @@ const CalendarWithCloset = () => {
               <>
                 <Text style={styles.noClothesText}>No clothes added yet.</Text>
                 <TouchableOpacity
-                  style={[styles.modalButton, { backgroundColor: '#32CD32' }]}
+                  style={[styles.modalButton, styles.addButton]}
                   onPress={() => addClothesToDate(selectedDate)}
                 >
                   <Text style={styles.modalButtonText}>Add Clothes</Text>
@@ -126,7 +126,7 @@ const CalendarWithCloset = () => {
             style={[styles.modalButton, { backgroundColor: '#808080' }]}
             onPress={() => setModalVisible(false)}
           >
-            <Text style={styles.modalButtonText}>Close</Text>
+            <Text style={styles.modalButtonText}>Go to Calendar</Text>
           </TouchableOpacity>
         </View>
       </Modal>
@@ -216,6 +216,12 @@ const styles = StyleSheet.create({
     color: '#333',
     textAlign: 'center',
     marginVertical: 20,
+  },
+  addButton: {
+    backgroundColor: '#FF69B4', // 핑크색 (Add Clothes)
+  },
+  removeButton: {
+    backgroundColor: '#808080', // 회색 (Remove All Clothes)
   },
 });
 

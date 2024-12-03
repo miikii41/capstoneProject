@@ -2,59 +2,67 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { Circle } from 'react-native-progress'; // 라이브러리에서 가져오기
 
 const SetterMainPage = () => {
   const navigation = useNavigation();
-
-  const handleGoBack = () => {
-    // Reset the navigation stack and navigate to InitialLogin
-    navigation.navigate('InitialLogin');
-  };
 
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Main Page</Text>
       <Text style={styles.subHeader}>Matching</Text>
 
-      <TouchableOpacity
-          onPress={() => navigation.navigate('MatchingPage')}
-        >
-      <View style={styles.chartContainer}>
-        <Text>현재 요청서의 수락 현황은.....</Text>
-        <View style={styles.chart}></View>
+  <TouchableOpacity onPress={() => navigation.navigate('MatchingPage')}>
+    <View style={styles.chartContainer}>
+      <Text style={styles.chartText}>현재 요청서의 수락 현황은.....</Text>
+      <View style={styles.progressWrapper}>
+        {/* Circular Progress */}
+        <Circle
+          size={100} // 원 크기
+          progress={0.2} // 진행률 (0~1 사이 값)
+          thickness={8} // 원 테두리 두께
+          color="#ff69b4" // 진행된 부분 색상
+          unfilledColor="#e0e0e0" // 미진행 부분 색상
+          showsText={false} // 기본 텍스트 비활성화
+        />
+        {/* Custom 중앙 텍스트 */}
+        <Text style={styles.progressText}>20%</Text>
       </View>
-     </TouchableOpacity>
+    </View>
+  </TouchableOpacity>
 
 
-      <View style={styles.buttonContainer}>
+      {/* 버튼 컨테이너 */}
+      <View style={[styles.buttonContainer, { justifyContent: 'center' }]}>
+        {/* 요청서 수락하기 버튼 */}
         <TouchableOpacity
           style={styles.button}
           onPress={() => navigation.navigate('RequestApproval')}
         >
-          <Icon name="check" size={20} color="#333" style={{ marginRight: 5 }} />
+          <Icon name="check" size={20} color="#fff" style={{ marginRight: 5 }} />
           <Text style={styles.buttonText}>요청서 수락하기</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.button}
-            onPress={() => navigation.navigate('ChatDetail', { chatId: 'fashionlover' })} // chatId 전달
-          >
+        {/* 제안서 작성하기 버튼 숨김 */}
+        <TouchableOpacity
+          style={[styles.hiddenButton]}
+          onPress={() => navigation.navigate('ChatDetail', { chatId: 'fashionlover' })}
+        >
           <View style={styles.iconWrapper}>
-            <Icon name="plus" size={16} color="#333" />
+            <Icon name="plus" size={16} color="#fff" />
           </View>
           <Text style={styles.buttonText}>제안서 작성하기</Text>
         </TouchableOpacity>
       </View>
 
+      {/* 마이페이지 버튼 */}
       <View style={styles.singleButtonContainer}>
         <TouchableOpacity
           style={styles.singleButton}
           onPress={() => navigation.navigate('MyPageTabView')}
         >
-          <Text style={styles.buttonText}>마이페이지</Text>
+          <Text style={styles.singleButtonText}>마이페이지</Text>
         </TouchableOpacity>
-
-
-
       </View>
     </View>
   );
@@ -63,9 +71,9 @@ const SetterMainPage = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: '#f9f9f9', // 연한 회색 배경
+    padding: 20,
   },
   header: {
     fontSize: 36,
@@ -80,59 +88,94 @@ const styles = StyleSheet.create({
   },
   chartContainer: {
     alignItems: 'center',
-    backgroundColor: '#f0f0f0',
+    backgroundColor: '#ffffff', // 흰색 배경
     padding: 20,
-    borderRadius: 10,
+    borderRadius: 15,
     marginBottom: 30,
-    width: '80%',
+    width: '85%',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3, // 그림자 추가
   },
-  chart: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
-    backgroundColor: '#808080',
-    marginTop: 10,
+  chartText: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#333',
   },
   buttonContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
     width: '80%',
     marginBottom: 20,
+  },
+  button: {
+    backgroundColor: '#ff69b4', // 핑크 배경
+    paddingVertical: 15,
+    paddingHorizontal: 20,
+    borderRadius: 12,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    elevation: 5,
+    width: '80%',
+  },
+  buttonText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#fff',
   },
   singleButtonContainer: {
     alignItems: 'center',
     width: '80%',
+    marginTop: 10,
   },
-  button: {
-    backgroundColor: '#e0e0e0',
-    padding: 15,
-    borderRadius: 10,
+  singleButton: {
+    backgroundColor: '#555',
+    paddingVertical: 15,
+    borderRadius: 12,
     alignItems: 'center',
     justifyContent: 'center',
-    width: 140,
-    flexDirection: 'row', // To align icon and text in a row
+    width: '80%',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  singleButtonText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#fff',
+  },
+  hiddenButton: {
+    display: 'none',
   },
   iconWrapper: {
     width: 24,
     height: 24,
     borderRadius: 12,
-    backgroundColor: '#e0e0e0', // Gray background for the circle
+    backgroundColor: '#ff69b4',
     alignItems: 'center',
     justifyContent: 'center',
     marginRight: 5,
   },
-  singleButton: {
-    backgroundColor: '#e0e0e0',
-    padding: 15,
-    borderRadius: 10,
+progressWrapper: {
+    position: 'relative', // 부모 요소를 기준으로 자식 요소 겹치기
     alignItems: 'center',
     justifyContent: 'center',
-    width: '100%',
+    marginTop: 10,
   },
-  buttonText: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#333',
+  progressText: {
+    position: 'absolute', // 부모 뷰의 중앙에 배치
+    fontSize: 18, // 텍스트 크기
+    fontWeight: 'bold', // 굵은 텍스트
+    color: '#ff69b4', // 핑크 텍스트
   },
 });
 

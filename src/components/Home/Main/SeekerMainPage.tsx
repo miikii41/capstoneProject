@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { Circle } from 'react-native-progress'; // 라이브러리에서 가져오기
 
 const SeekerMainPage = () => {
   const navigation = useNavigation();
@@ -11,15 +12,23 @@ const SeekerMainPage = () => {
       <Text style={styles.header}>Main Page</Text>
       <Text style={styles.subHeader}>Matching</Text>
 
-      <TouchableOpacity
-          onPress={() => navigation.navigate('MatchingPage')}
-        >
-      <View style={styles.chartContainer}>
-        <Text>현재 요청서의 수락 현황은.....</Text>
-        <View style={styles.chart}></View>
-      </View>
-     </TouchableOpacity>
-
+  <TouchableOpacity onPress={() => navigation.navigate('MatchingPage')}>
+     <View style={styles.chartContainer}>
+       <Text style={styles.chartText}>현재 요청서의 수락 현황은.....</Text>
+       <View style={styles.progressWrapper}>
+         {/* Circular Progress */}
+         <Circle
+           size={100} // 원 크기
+           progress={0.2} // 진행률 (0~1 사이 값)
+           thickness={8} // 원 테두리 두께
+           color="#ff69b4" // 진행된 부분 색상
+           unfilledColor="#e0e0e0" // 미진행 부분 색상
+           showsText={false} // 기본 텍스트 비활성화
+         />
+         <Text style={styles.progressText}>20%</Text>
+       </View>
+     </View>
+   </TouchableOpacity>
 
 
       <View style={styles.buttonContainer}>
@@ -46,7 +55,7 @@ const SeekerMainPage = () => {
           onPress={() => navigation.navigate('AddCloset')}
         >
           <Icon name="wardrobe-outline" size={24} color="#333" />
-          <Text style={styles.buttonText}>CLOSET</Text>
+          <Text style={styles.buttonText}>옷장 등록</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
@@ -69,11 +78,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    backgroundColor: '#fff',
+    backgroundColor: '#f9f9f9', // 연한 회색 배경
+    padding: 20,
   },
   header: {
-    fontSize: 40,
-    fontWeight: '900',
+    fontSize: 36,
+    fontWeight: 'bold',
     color: '#ff69b4',
     marginBottom: 10,
   },
@@ -84,37 +94,53 @@ const styles = StyleSheet.create({
   },
   chartContainer: {
     alignItems: 'center',
-    backgroundColor: '#f0f0f0',
+    backgroundColor: '#ffffff', // 흰색 배경
     padding: 20,
-    borderRadius: 10,
+    borderRadius: 15,
     marginBottom: 30,
-    width: '80%',
+    width: '85%',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3, // 그림자 추가
   },
   chartText: {
-    fontSize: 14,
+    fontSize: 16,
+    fontWeight: '600',
     color: '#333',
-    marginBottom: 10,
+    marginBottom: 15,
   },
-  chart: {
-    width: 100,
-    height: 100,
-    borderRadius: 50,
-    backgroundColor: '#808080',
+  progressWrapper: {
+    position: 'relative',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  progressText: {
+    position: 'absolute',
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#ff69b4', // 핑크 텍스트
   },
   buttonContainer: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
-    width: '80%',
+    justifyContent: 'space-between',
+    width: '85%',
     marginBottom: 20,
   },
   button: {
-    backgroundColor: '#e0e0e0',
+    backgroundColor: '#ffe4e9', // 연한 핑크 배경
     padding: 15,
-    borderRadius: 10,
+    borderRadius: 12,
     alignItems: 'center',
     justifyContent: 'center',
-    width: 140,
+    width: '45%',
     flexDirection: 'row',
+    shadowColor: '#000', // 그림자 추가
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    elevation: 3,
   },
   buttonText: {
     fontSize: 16,
@@ -122,6 +148,6 @@ const styles = StyleSheet.create({
     color: '#333',
     marginLeft: 8,
   },
-  });
+});
 
 export default SeekerMainPage;

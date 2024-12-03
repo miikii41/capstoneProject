@@ -63,29 +63,35 @@ const MatchingPage: React.FC = () => {
 
   const requestlist: Request[] = [
     {
-      id: '00001',
-      name: '청바지',
-      requestDate: '2024-05-22',
+      id: 'Cindy',
+      name: '#데이트 #레스토랑 #페미닌',
+      requestDate: '2024-12-03',
       status: 'progress',
     },
     {
-      id: '00002',
-      name: '니트',
-      requestDate: '2024-05-22',
+      id: 'Dora',
+      name: '#학교 #발표 #비즈니스',
+      requestDate: '2024-12-03',
       status: 'completed',
     },
     {
-      id: '00003',
-      name: '원피스',
-      requestDate: '2024-05-22',
+      id: 'Ariana',
+      name: '#비즈니스 #회사 #미니멀',
+      requestDate: '2024-12-04',
       status: 'before',
     },
     {
-      id: '00004',
-      name: '셔츠',
-      requestDate: '2024-05-22',
+      id: 'Minki',
+      name: '#친구 #여행 #캐쥬얼',
+      requestDate: '2024-12-03',
       status: 'before',
     },
+    {
+          id: 'Sabrina',
+          name: '#친구 #공원 #스트리트',
+          requestDate: '2024-11-23',
+          status: 'before',
+        },
   ];
 
   // 상태별 데이터 필터링
@@ -121,7 +127,7 @@ const MatchingPage: React.FC = () => {
     <SafeAreaView style={{ flex: 1, backgroundColor: '#f0f0f0' }}>
       <Tabs.Container>
         {/* 거래 전 탭 */}
-        <Tabs.Tab name="매칭 전">
+        <Tabs.Tab name="대기중">
           <Tabs.FlatList
             data={filteredRequests.before}
             renderItem={renderRequestItem}
@@ -130,7 +136,7 @@ const MatchingPage: React.FC = () => {
         </Tabs.Tab>
 
         {/* 거래 중 탭 */}
-        <Tabs.Tab name="매칭 중">
+        <Tabs.Tab name="작성중">
           <Tabs.FlatList
             data={filteredRequests.progress}
             renderItem={renderRequestItem}
@@ -139,7 +145,7 @@ const MatchingPage: React.FC = () => {
         </Tabs.Tab>
 
         {/* 거래 완료 탭 */}
-        <Tabs.Tab name="매칭 완료">
+        <Tabs.Tab name="전송완료">
           <Tabs.FlatList
             data={filteredRequests.completed}
             renderItem={renderRequestItem}
