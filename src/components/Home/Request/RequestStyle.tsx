@@ -13,7 +13,7 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import BottomButton from '../../../common/BottomButton';
 
-const RequestForm = () => {
+const RequestStyle = () => {
   const navigation = useNavigation(); // Navigation object
 
   // State management
@@ -70,7 +70,7 @@ const RequestForm = () => {
       <View style={styles.container}>
         <Text style={styles.header}>Request</Text>
 
-        {/* Clothes Section */}
+
         <Text style={styles.sectionTitle}>Clothes</Text>
         <TouchableOpacity onPress={handleClothesSelection} >
               <Image
@@ -79,7 +79,7 @@ const RequestForm = () => {
               />
         </TouchableOpacity>
 
-        {/* Render Selected Clothes */}
+
         <View style={styles.photosContainer}>
           {clothes.map((itemUri, index) => (
             <View key={index} style={styles.photoContainer}>
@@ -98,7 +98,7 @@ const RequestForm = () => {
           ))}
         </View>
 
-        {/* Place Section */}
+
         <Text style={styles.sectionTitle}>Place</Text>
         <View style={styles.buttonGroup}>
           {["공원", "레스토랑", "카페", "여행", "학교", "기타"].map((place) => (
@@ -122,7 +122,7 @@ const RequestForm = () => {
           ))}
         </View>
 
-        {/* Season Section */}
+
         <Text style={styles.sectionTitle}>Season</Text>
         <View style={styles.buttonGroup}>
           {["spring/fall", "summer", "winter"].map((season) => (
@@ -146,7 +146,7 @@ const RequestForm = () => {
           ))}
         </View>
 
-        {/* Weather Section */}
+
         <Text style={styles.sectionTitle}>Weather</Text>
         <View style={styles.buttonGroup}>
           {["비", "바람", "눈", "습함"].map((weather) => (
@@ -170,7 +170,7 @@ const RequestForm = () => {
           ))}
         </View>
 
-        {/* Style Section */}
+
         <Text style={styles.sectionTitle}>Style</Text>
         <View style={styles.buttonGroup}>
           {["캐주얼", "비즈니스", "포멀", "스포티", "스트리트", "미니멀", "빈티지", "페미닌", "힙", "기타"].map((style) => (
@@ -194,7 +194,7 @@ const RequestForm = () => {
           ))}
         </View>
 
-        {/* With Section */}
+
         <Text style={styles.sectionTitle}>With</Text>
         <View style={styles.buttonGroup}>
           {["친구", "연인", "가족", "비즈니스", "기타"].map((withWho) => (
@@ -218,26 +218,33 @@ const RequestForm = () => {
           ))}
         </View>
 
-        {/* Toggle Switches */}
+            <View style={{ paddingHorizontal: 45, paddingVertical: 10 }}>
+                </View>
+
         <View style={styles.switchContainer}>
           <View style={styles.switchRow}>
             <Text style={styles.switchLabel}>체형 공개</Text>
             <Switch
               value={isBodyPublic}
               onValueChange={(value) => setIsBodyPublic(value)}
+              trackColor={{ false: "#e0e0e0", true: "#f5c6d5" }}
+              thumbColor={isBodyPublic ? "#ff69b4" : "#fff"}
             />
           </View>
-
           <View style={styles.switchRow}>
             <Text style={styles.switchLabel}>컴플렉스 공개</Text>
             <Switch
               value={isComplexPublic}
               onValueChange={(value) => setIsComplexPublic(value)}
+              trackColor={{ false: "#e0e0e0", true: "#f5c6d5" }}
+              thumbColor={isComplexPublic ? "#ff69b4" : "#fff"}
             />
           </View>
         </View>
 
-        {/* Additional Request Section */}
+              <View style={{ paddingHorizontal: 45, paddingVertical: 20 }}>
+        </View>
+
         <Text style={styles.sectionTitle}>추가 요청사항</Text>
         <TextInput
           style={styles.inputBox}
@@ -273,7 +280,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
     marginBottom: 10,
-    color: 'black'
+    color: 'black',
   },
   photosContainer: {
     flexDirection: "row",
@@ -292,19 +299,20 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   button: {
-    backgroundColor: "#e0e0e0",
+    backgroundColor: "#e0e0e0", // 기본 버튼 색상: 회색
     padding: 10,
     borderRadius: 10,
     margin: 5,
   },
   selectedButton: {
-    backgroundColor: 'black',
+    backgroundColor: '#f5c6d5', // 선택된 버튼 색상: 부드러운 핑크색
   },
   buttonText: {
     fontSize: 14,
+    color: 'black', // 기본 텍스트 색상
   },
   selectedButtonText: {
-    color: 'white',
+    color: 'black', // 선택된 상태의 텍스트 색상
   },
   inputBox: {
     borderWidth: 1,
@@ -328,22 +336,51 @@ const styles = StyleSheet.create({
     color: 'black',
     fontSize: 16,
   },
-    hangerImage: {
-      width: 51,
-      height: 27,
-    },
+  hangerImage: {
+    width: 51,
+    height: 27,
+  },
   removeButton: {
     position: 'absolute',
     right: 5,
     backgroundColor: 'deeppink',
     borderRadius: 100,
   },
-    removeButtonText: {
-      color: 'black',
-      fontSize: 25,
-      fontWeight:'bold',
-    },
-
+  removeButtonText: {
+    color: 'black',
+    fontSize: 25,
+    fontWeight: 'bold',
+  },
+  switchRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  switchLabel: {
+    fontSize: 16,
+    color: 'black',
+  },
+  switchTrackColor: {
+    true: '#f5c6d5', // 스위치가 켜졌을 때 트랙 색상: 부드러운 핑크색
+    false: '#e0e0e0', // 스위치가 꺼졌을 때 트랙 색상: 회색
+  },
+  switchThumbColor: {
+    true: '#fff', // 스위치가 켜졌을 때 thumb 색상
+    false: '#fff', // 스위치가 꺼졌을 때 thumb 색상
+  },
+  bottomButton: {
+    backgroundColor: '#f5c6d5', // 부드러운 핑크색 (다음 버튼)
+    paddingVertical: 15,
+    borderRadius: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  bottomButtonText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: 'white',
+  },
 });
 
-export default RequestForm;
+export default RequestStyle;
