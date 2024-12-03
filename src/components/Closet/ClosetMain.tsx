@@ -40,7 +40,7 @@ const ClosetMain = ({ navigation, route }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>YOUR CLOSET</Text>
+      <Text style={styles.title}>CLOSET</Text>
 
       {/* 선택되지 않은 옷들 */}
       <View style={styles.closetContainer}>
