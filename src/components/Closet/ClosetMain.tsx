@@ -6,6 +6,7 @@ const ClosetMain = ({ navigation, route }) => {
   const { clothes } = useCloset(); // clothes 배열 가져오기
   const [availableClothes, setAvailableClothes] = useState<string | number[]>([
     require('../../assets/Closet/sweater.png'),
+    require('../../assets/Closet/brownpants.png'),
     ]); // 선택되지 않은 옷들  , sweater.png 임의로 기본값으로 추가
   const [chosenClothes, setChosenClothes] = useState<string | number[]>([
       ]); // 선택된 옷들
@@ -35,7 +36,7 @@ const ClosetMain = ({ navigation, route }) => {
       ); // `require`와 URI를 구분하여 전달
       route.params.onSelect(formattedClothes); // 콜백 호출
     }
-    navigation.navigate('RequestForm');
+    navigation.navigate('RequestStyle');
   };
 
   return (
