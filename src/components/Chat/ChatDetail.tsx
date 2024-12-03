@@ -76,7 +76,7 @@ const ChatDetail = ({ route }) => {
       <View style={styles.inputContainer}>
 
         <TouchableOpacity
-        onPress={() => navigation.navigate('ClosetMain')} >
+        onPress={() => navigation.navigate('AddCloset')} >
 
           <Image
             source={require('../../assets/Closet/hanger.png')}
