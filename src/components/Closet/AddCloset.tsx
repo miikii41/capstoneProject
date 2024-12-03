@@ -76,7 +76,10 @@ const AddCloset = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>ADD TO CLOSET</Text>
+      <Text style={styles.title}>Dora의 옷장</Text>
+
+        <View style={{ paddingHorizontal: 45, paddingVertical: 5 }}>
+        </View>
 
       {/* 카테고리 버튼 */}
       <View style={styles.categoryContainer}>

@@ -7,10 +7,10 @@ const RequestApproval = () => {
 
   // 이름과 해시태그 데이터
   const hashtags = [
-    "   Dora #학교 #발표 #비즈니스",
+    "Dora #학교 #발표 #비즈니스",
     "Ariana #비즈니스 #회사 #미니멀",
-    " Minki #친구 #여행 #캐쥬얼",
-    " Sabrina #친구 #공원 #스트리트"
+    "Minki #친구 #여행 #캐쥬얼",
+    "Sabrina #친구 #공원 #스트리트"
   ];
 
   return (

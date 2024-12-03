@@ -73,11 +73,10 @@ function SetterNavigator() {
       <Stack.Screen name="RequestApproval" component={RequestApproval} />
       <Stack.Screen name="RequestAccepted" component={RequestAccepted} />
       <Stack.Screen name="ClosetMain" component={ClosetMain} />
+        <Stack.Screen name="AddCloset" component={AddCloset} />
       <Stack.Screen name="InitialLogin" component={InitialLogin} />
-
       <Stack.Screen name="ChatDetail" component={ChatDetail} />
             <Stack.Screen name="ChatList" component={ChatList} />
-
       <Stack.Screen name="MatchingPage" component={MatchingPage} />
 
     </Stack.Navigator>
