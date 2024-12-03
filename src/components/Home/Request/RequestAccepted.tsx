@@ -7,11 +7,15 @@ const RequestAccepted = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.message}>Dora님의 요청서를 수락하셨습니다!</Text>
+      {/* 메시지 */}
+      <Text style={styles.message}>
+        <Text style={styles.highlight}>Dora </Text>님의 요청서를 수락하셨습니다!
+      </Text>
 
+      {/* 버튼 */}
       <TouchableOpacity
         style={styles.button}
-            onPress={() => navigation.navigate('ChatDetail', { chatId: 'fashionlover' })} // chatId 전달
+        onPress={() => navigation.navigate('ChatDetail', { chatId: 'fashionlover' })}
       >
         <Text style={styles.buttonText}>제안서 작성하기</Text>
       </TouchableOpacity>
@@ -24,18 +28,31 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'white',
+    backgroundColor: '#f9f9f9', // 연한 회색 배경
+    padding: 20,
   },
   message: {
-    fontSize: 24,
+    fontSize: 22,
+    fontWeight: '600',
+    color: '#333', // 어두운 회색
+    textAlign: 'center',
+    marginBottom: 30,
+    lineHeight: 30, // 텍스트 간격
+  },
+  highlight: {
+    color: '#ff69b4', // 핑크 강조
     fontWeight: 'bold',
-    color: 'deeppink',
-    marginBottom: 20,
   },
   button: {
-    backgroundColor: 'deeppink',
-    padding: 15,
-    borderRadius: 5,
+    backgroundColor: '#ff69b4', // 핑크 배경
+    paddingVertical: 15, // 버튼 높이
+    paddingHorizontal: 40, // 버튼 폭
+    borderRadius: 30, // 둥근 버튼
+    shadowColor: '#000', // 그림자
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    elevation: 5, // 안드로이드 그림자
   },
   buttonText: {
     color: 'white',

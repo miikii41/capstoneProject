@@ -61,7 +61,7 @@ const ChatDetail = ({ route }) => {
     <View style={styles.container}>
       {/* 헤더 */}
       <View style={styles.header}>
-        <Text style={styles.headerText}>채팅방 - {chatId}</Text>
+        <Text style={styles.headerText}>{chatId}님의 제안서</Text>
       </View>
 
       {/* 메시지 리스트 */}
