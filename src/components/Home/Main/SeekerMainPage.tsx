@@ -42,7 +42,7 @@ const SeekerMainPage = () => {
 
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.navigate('RequestForm')}
+          onPress={() => navigation.navigate('RequestStyle')}
         >
           <Icon name="plus-circle-outline" size={24} color="#333" />
           <Text style={styles.buttonText}>요청서 작성</Text>

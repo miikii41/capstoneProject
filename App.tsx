@@ -25,7 +25,7 @@ import WeatherProvider from './src/contexts/WeatherProvider'; // 새로 추가�
 import WeatherPage from "./src/components/Weather/WeatherPage"; // WeatherPage를 추가
 import RequestApproval from './src/components/Home/Request/RequestApproval';
 import RequestPage from './src/components/Home/Request/RequestPage';
-import RequestForm from './src/components/Home/Request/RequestForm';
+import RequestStyle from './src/components/Home/Request/RequestStyle';
 import RequestSent from './src/components/Home/Request/RequestSent';
 import RequestAccepted from './src/components/Home/Request/RequestAccepted';
 import MatchingPage from './src/components/Home/Matching/MatchingPage';
@@ -46,7 +46,7 @@ function SeekerNavigator() {
   return (
     <Stack.Navigator>
       <Stack.Screen name="SeekerMainPage" component={SeekerMainPage} />
-      <Stack.Screen name="RequestForm" component={RequestForm} />
+      <Stack.Screen name="RequestStyle" component={RequestStyle} />
       <Stack.Screen name="WeatherPage" component={WeatherPage} />
       <Stack.Screen name="RequestApproval" component={RequestApproval} />
       <Stack.Screen name="RequestPage" component={RequestPage} />
