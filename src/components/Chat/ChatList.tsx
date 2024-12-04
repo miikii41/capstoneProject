@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 const ChatList = () => {
   const navigation = useNavigation();
   const chats = [
-    { id: '1', nickname: 'User Nickname', lastMessage: '간단한 제안서의 내용' },
+    { id: '1', nickname: 'User Nickname', lastMessage: '가장 많이 매칭된 코디' },
   ];
 
   return (
