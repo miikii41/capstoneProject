@@ -12,7 +12,7 @@ const SeekerMainPage = () => {
       <Text style={styles.header}>Main Page</Text>
       <Text style={styles.subHeader}>Matching</Text>
 
-  <TouchableOpacity onPress={() => navigation.navigate('MatchingPage')}>
+  <TouchableOpacity onPress={() => navigation.navigate('MatchingPageSeeker')}>
      <View style={styles.chartContainer}>
        <Text style={styles.chartText}>현재 요청서의 수락 현황은.....</Text>
        <View style={styles.progressWrapper}>
