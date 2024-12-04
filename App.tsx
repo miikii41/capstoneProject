@@ -31,6 +31,7 @@ import RequestAccepted from './src/components/Home/Request/RequestAccepted';
 import MatchingPage from './src/components/Home/Matching/MatchingPage';
 import AddCloset from './src/components/Closet/AddCloset';
 import ClosetMain from './src/components/Closet/ClosetMain';
+import DoraCloset from './src/components/Closet/DoraCloset';
 import { ClosetProvider } from './src/contexts/ClosetContext';
 import ChatDetail from './src/components/Chat/ChatDetail';
 import ChatList from './src/components/Chat/ChatList';
@@ -55,6 +56,7 @@ function SeekerNavigator() {
       <Stack.Screen name="MatchingPage" component={MatchingPage} />
       <Stack.Screen name="InitialLogin" component={InitialLogin} />
       <Stack.Screen name="AddCloset" component={AddCloset} />
+      <Stack.Screen name="DoraCloset" component={DoraCloset} />
       <Stack.Screen name="ClosetMain" component={ClosetMain} />
       <Stack.Screen name="CalendarWithCloset" component={CalendarWithCloset} />
  </Stack.Navigator>
@@ -77,6 +79,8 @@ function SetterNavigator() {
       <Stack.Screen name="InitialLogin" component={InitialLogin} />
       <Stack.Screen name="ChatDetail" component={ChatDetail} />
             <Stack.Screen name="ChatList" component={ChatList} />
+            <Stack.Screen name="DoraCloset" component={DoraCloset} />
+
       <Stack.Screen name="MatchingPage" component={MatchingPage} />
 
     </Stack.Navigator>
