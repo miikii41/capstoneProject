@@ -136,7 +136,9 @@ const ChatDetail = ({ route }) => {
 
       {/* 입력창 */}
       <View style={styles.inputContainer}>
-        <TouchableOpacity onPress={() => navigation.navigate('AddCloset')}>
+
+        <TouchableOpacity
+        onPress={() => navigation.navigate('DoraCloset')} >
           <Image
             source={require('../../assets/Closet/hanger.png')}
             style={styles.hangerImage}
