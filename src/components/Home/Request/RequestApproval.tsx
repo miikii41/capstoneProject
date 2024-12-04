@@ -46,7 +46,7 @@ const RequestApproval = () => {
                 style={styles.orderCheckButton}
                 onPress={() => navigation.navigate('RequestPage')}
               >
-                <Text style={styles.orderCheckText}>주문서 확인</Text>
+                <Text style={styles.orderCheckText}>요청서 확인</Text>
               </TouchableOpacity>
             </View>
           );
