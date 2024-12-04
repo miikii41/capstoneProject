@@ -78,6 +78,9 @@ const ChatDetail = ({ route }) => {
         <TouchableOpacity
         onPress={() => navigation.navigate('DoraCloset')} >
 
+        onPress={() => navigation.navigate('AddCloset')} >
+
+
           <Image
             source={require('../../assets/Closet/hanger.png')}
             style={styles.hangerImage}

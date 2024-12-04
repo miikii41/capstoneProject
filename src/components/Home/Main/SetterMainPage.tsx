@@ -111,72 +111,72 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   button: {
-    backgroundColor: '#ff69b4', // 핑크 배경
-    paddingVertical: 15,
-    paddingHorizontal: 20,
-    borderRadius: 12,
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection: 'row',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 4,
-    elevation: 5,
-    width: '80%',
-  },
-  buttonText: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#fff',
-  },
-  singleButtonContainer: {
-    alignItems: 'center',
-    width: '80%',
-    marginTop: 10,
-  },
-  singleButton: {
-    backgroundColor: '#555',
-    paddingVertical: 15,
-    borderRadius: 12,
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '80%',
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 4,
-    elevation: 5,
-  },
-  singleButtonText: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: '#fff',
-  },
-  hiddenButton: {
-    display: 'none',
-  },
-  iconWrapper: {
-    width: 24,
-    height: 24,
-    borderRadius: 12,
-    backgroundColor: '#ff69b4',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginRight: 5,
-  },
-progressWrapper: {
-    position: 'relative', // 부모 요소를 기준으로 자식 요소 겹치기
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 10,
-  },
-  progressText: {
-    position: 'absolute', // 부모 뷰의 중앙에 배치
-    fontSize: 18, // 텍스트 크기
-    fontWeight: 'bold', // 굵은 텍스트
-    color: '#ff69b4', // 핑크 텍스트
-  },
-});
+     backgroundColor: '#ffe4e9', // 더 부드러운 핑크 배경
+     paddingVertical: 15,
+     paddingHorizontal: 20,
+     borderRadius: 12,
+     alignItems: 'center',
+     justifyContent: 'center',
+     flexDirection: 'row',
+     shadowColor: '#000',
+     shadowOffset: { width: 0, height: 2 },
+     shadowOpacity: 0.2,
+     shadowRadius: 4,
+     elevation: 5,
+     width: '80%',
+   },
+   buttonText: {
+     fontSize: 16,
+     fontWeight: 'bold',
+     color: '#333', // 더 부드러운 텍스트 색상
+   },
+   singleButtonContainer: {
+     alignItems: 'center',
+     width: '80%',
+     marginTop: 10,
+   },
+   singleButton: {
+     backgroundColor: '#d9d9d9', // 더 부드러운 회색
+     paddingVertical: 15,
+     borderRadius: 12,
+     alignItems: 'center',
+     justifyContent: 'center',
+     width: '80%',
+     shadowColor: '#000',
+     shadowOffset: { width: 0, height: 2 },
+     shadowOpacity: 0.2,
+     shadowRadius: 4,
+     elevation: 5,
+   },
+   singleButtonText: {
+     fontSize: 16,
+     fontWeight: 'bold',
+     color: '#333', // 텍스트 색상 유지
+   },
+   hiddenButton: {
+     display: 'none',
+   },
+   iconWrapper: {
+     width: 24,
+     height: 24,
+     borderRadius: 12,
+     backgroundColor: '#ffe4e9', // 부드러운 핑크
+     alignItems: 'center',
+     justifyContent: 'center',
+     marginRight: 5,
+   },
+   progressWrapper: {
+     position: 'relative', // 부모 요소를 기준으로 자식 요소 겹치기
+     alignItems: 'center',
+     justifyContent: 'center',
+     marginTop: 10,
+   },
+   progressText: {
+     position: 'absolute', // 부모 뷰의 중앙에 배치
+     fontSize: 18, // 텍스트 크기
+     fontWeight: 'bold', // 굵은 텍스트
+     color: '#ff69b4', // 핑크 텍스트
+   },
+ });
 
 export default SetterMainPage;

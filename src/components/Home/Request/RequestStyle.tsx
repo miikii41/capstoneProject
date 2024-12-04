@@ -370,7 +370,7 @@ const styles = StyleSheet.create({
     false: '#fff', // 스위치가 꺼졌을 때 thumb 색상
   },
   bottomButton: {
-    backgroundColor: '#f5c6d5', // 부드러운 핑크색 (다음 버튼)
+    backgroundColor: '#ffe4e9', // 부드러운 핑크색 (다음 버튼)
     paddingVertical: 15,
     borderRadius: 10,
     alignItems: 'center',
