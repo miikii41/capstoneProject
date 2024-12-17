@@ -29,6 +29,7 @@ import RequestStyle from './src/components/Home/Request/RequestStyle';
 import RequestSent from './src/components/Home/Request/RequestSent';
 import RequestAccepted from './src/components/Home/Request/RequestAccepted';
 import MatchingPage from './src/components/Home/Matching/MatchingPage';
+import MatchingPageSeeker from './src/components/Home/Matching/MatchingPageSeeker';
 import AddCloset from './src/components/Closet/AddCloset';
 import ClosetMain from './src/components/Closet/ClosetMain';
 import DoraCloset from './src/components/Closet/DoraCloset';
@@ -53,12 +54,20 @@ function SeekerNavigator() {
       <Stack.Screen name="RequestPage" component={RequestPage} />
       <Stack.Screen name="RequestSent" component={RequestSent} />
       <Stack.Screen name="RequestAccepted" component={RequestAccepted} />
-      <Stack.Screen name="MatchingPage" component={MatchingPage} />
+      <Stack.Screen name="MatchingPageSeeker" component={MatchingPageSeeker} />
       <Stack.Screen name="InitialLogin" component={InitialLogin} />
       <Stack.Screen name="AddCloset" component={AddCloset} />
       <Stack.Screen name="DoraCloset" component={DoraCloset} />
       <Stack.Screen name="ClosetMain" component={ClosetMain} />
       <Stack.Screen name="CalendarWithCloset" component={CalendarWithCloset} />
+
+
+
+      <Stack.Screen name="PortfolioPage" component={PortfolioPage} />
+      <Stack.Screen name="Review" component={Review} />
+      <Stack.Screen name="MyPageTabView" component={MyPageTabView} />
+
+
  </Stack.Navigator>
 
   );
