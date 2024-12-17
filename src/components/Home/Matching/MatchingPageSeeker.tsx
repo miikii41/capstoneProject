@@ -82,31 +82,31 @@ const MatchingPageSeeker: React.FC = () => {
 
   const requestlist: Request[] = [
     {
-      id: 'Cindy',
+      id: 'FashionMaster',
       name: '#데이트 #레스토랑 #페미닌',
       requestDate: '2024-12-03',
       status: 'progress',
     },
     {
-      id: 'Dora',
+      id: 'fashionlover',
       name: '#학교 #발표 #비즈니스',
       requestDate: '2024-12-03',
       status: 'completed',
     },
     {
-      id: 'Ariana',
+      id: 'StyleBest',
       name: '#비즈니스 #회사 #미니멀',
       requestDate: '2024-12-04',
       status: 'before',
     },
     {
-      id: 'Minki',
+      id: 'Stylist',
       name: '#친구 #여행 #캐쥬얼',
       requestDate: '2024-12-03',
       status: 'before',
     },
     {
-          id: 'Sabrina',
+          id: 'Styler',
           name: '#친구 #공원 #스트리트',
           requestDate: '2024-11-23',
           status: 'before',
@@ -133,7 +133,7 @@ const MatchingPageSeeker: React.FC = () => {
           <RequestId>{item.id}</RequestId>
         </View>
         <TouchableOpacity onPress={() => handleViewRequest(item.id)}>
-             <ButtonText>{item.status === 'completed' ? '제안서 확인' : '요청서 확인'}</ButtonText>
+             <ButtonText>{item.status === 'completed' ? '제안서 확인' : '보낸 요청서 보기'}</ButtonText>
         </TouchableOpacity>
 
       </RequestHeader>
@@ -141,7 +141,6 @@ const MatchingPageSeeker: React.FC = () => {
       <RequestName>{item.name}</RequestName>
       <RequestDate>{item.requestDate}</RequestDate>
 
-        {/* 완료 상태에서 추가 버튼 */}
         {item.status === 'completed' && (
           <TouchableOpacity
              onPress={() => navigation.navigate('MyPageTabView')}>

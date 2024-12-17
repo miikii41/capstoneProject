@@ -81,7 +81,7 @@ const ChatDetail = ({ route }) => {
                 <Text style={styles.detailText}>계절: winter</Text>
                 <Text style={styles.detailText}>날씨: 눈</Text>
                 <Text style={styles.detailText}>스타일: 비즈니스</Text>
-                <Text style={styles.detailText}>동행: 친구</Text>
+                <Text style={styles.detailText}>동행: 비즈니스</Text>
                 <View style={styles.separator} />
                 <Text style={styles.detailText}>체형: apple</Text>
                 <Text style={styles.detailText}>컴플렉스: 하체비만</Text>
@@ -96,6 +96,7 @@ const ChatDetail = ({ route }) => {
       </View>
     );
   };
+
 
   return (
     <View style={styles.container}>
@@ -154,10 +155,24 @@ const ChatDetail = ({ route }) => {
         <TouchableOpacity style={styles.sendButton} onPress={sendMessage}>
           <Text style={styles.sendButtonText}>전송</Text>
         </TouchableOpacity>
+
       </View>
+
+
+<View style={styles.mainButtonWrapper}>
+  <TouchableOpacity
+    style={styles.mainButton}
+    onPress={() => navigation.navigate('SetterMainPage')}>
+    <Text style={styles.mainButtonText}>메인 화면 가기</Text>
+  </TouchableOpacity>
+</View>
     </View>
   );
 };
+
+
+
+
 
 const styles = StyleSheet.create({
   container: {
@@ -301,6 +316,19 @@ const styles = StyleSheet.create({
     width: 51,
     height: 27,
     marginRight: 10,
+  },
+  mainButton: {
+    backgroundColor: '#FFDDE3',
+    padding: 10,
+    borderRadius: 8,
+    alignItems: 'center',
+    marginBottom: 10,
+    marginHorizontal: 10,
+  },
+  mainButtonText: {
+    color: '#333',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });
 

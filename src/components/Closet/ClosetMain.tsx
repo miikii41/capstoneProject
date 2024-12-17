@@ -7,6 +7,7 @@ const ClosetMain = ({ navigation, route }) => {
   const [availableClothes, setAvailableClothes] = useState<string | number[]>([
     require('../../assets/Closet/sweater.png'),
     require('../../assets/Closet/brownpants.png'),
+    require('../../assets/StyleResult/img.png'),
     ]); // 선택되지 않은 옷들  , sweater.png 임의로 기본값으로 추가
   const [chosenClothes, setChosenClothes] = useState<string | number[]>([
       ]); // 선택된 옷들
